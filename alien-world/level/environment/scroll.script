@@ -1,0 +1,9 @@
+
+function update(self, dt)
+	local pos = go.get_position()
+	pos.x = pos.x - 5
+	if pos.x <= -2953.720 then
+		pos.x =pos.x + 5907.44
+	end
+	go.set_position(pos)
+end

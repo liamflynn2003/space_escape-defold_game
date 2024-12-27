@@ -1,0 +1,25 @@
+name: "default"
+scale_along_z: 0
+embedded_instances {
+  id: "player"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"run\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/def-alien-world/sprites/player.tilesource\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    y: 18.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 2.5
+    y: 2.5
+    z: 2.5
+  }
+}

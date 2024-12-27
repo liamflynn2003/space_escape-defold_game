@@ -1,0 +1,13 @@
+
+function init(self)
+	-- Get the collection factory component ID
+	self.factory_id = "#playerFactory"
+end
+
+function update(self, dt)
+	local spawn_pos = vmath.vector3(110, 120, 0)
+	if not self.spawned then
+		collectionfactory.create(self.factory_id, spawn_pos, nil)
+		self.spawned = true 
+	end
+end

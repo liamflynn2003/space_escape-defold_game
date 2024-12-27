@@ -1,50 +1,50 @@
-function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+local target_y = 200  -- The target Y value to reach when jumping
+local jump_speed = 250 
+local fall_speed = 250 
+local is_jumping = false
+local is_falling = false 
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+function init(self)
+	-- Acquire input focus
+	msg.post(".", "acquire_input_focus")
+	self.is_jumping = false
+	self.is_falling = false
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+	local pos = go.get_position()
 
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+	-- Jumping logic
+	if is_jumping then
+		-- Move player upwards towards target_y at jump speed
+		if pos.y < target_y then
+			pos.y = pos.y + jump_speed * dt 
+		end
 
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+		-- Once the player reaches target_y, start falling
+		if pos.y >= target_y then
+			pos.y = target_y 
+			is_jumping = false  
+			is_falling = true  
+		end
+	elseif is_falling then
+		pos.y = pos.y - fall_speed * dt
+		
+		if pos.y <= 130 then
+			is_falling = false
+			is_jumping = false
+		end
+	end
+
+	-- Update player position
+	go.set_position(pos)
 end
 
 function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+	if action_id == hash("jump") then
+		if action.released and not is_jumping and not is_falling then
+			-- Start the jump if the player is not already jumping or falling
+			is_jumping = true
+		end
+	end
 end

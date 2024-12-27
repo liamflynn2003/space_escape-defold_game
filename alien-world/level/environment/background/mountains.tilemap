@@ -1,7 +1,7 @@
 tile_set: "/level/environment/tiles/background.tilesource"
 layers {
   id: "layer1"
-  z: 0.0
+  z: 0.5
   cell {
     x: 0
     y: 0

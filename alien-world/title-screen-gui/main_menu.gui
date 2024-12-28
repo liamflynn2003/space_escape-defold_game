@@ -33,9 +33,9 @@ nodes {
     y: 282.0
   }
   scale {
-    x: 5.3976
-    y: 5.3976
-    z: 5.3976
+    x: 0.863616
+    y: 0.863616
+    z: 0.863616
   }
   size {
     x: 200.0
@@ -95,10 +95,13 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    y: -0.882353
+  }
   scale {
-    x: 0.852254
-    y: 1.127959
-    z: 3.0
+    x: 0.043526
+    y: 0.057607
+    z: 0.153216
   }
   size {
     x: 200.0
@@ -128,10 +131,13 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    y: -0.588235
+  }
   scale {
-    x: 0.852254
-    y: 1.127959
-    z: 3.0
+    x: 0.042272
+    y: 0.055947
+    z: 0.1488
   }
   size {
     x: 200.0
@@ -162,10 +168,13 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    y: -0.588235
+  }
   scale {
-    x: 0.852254
-    y: 1.127959
-    z: 3.0
+    x: 0.041931
+    y: 0.055496
+    z: 0.1476
   }
   size {
     x: 200.0

@@ -1,5 +1,5 @@
 font: "/fonts/smallFont/04B_03.TTF"
 material: "/builtins/fonts/font.material"
-size: 8
+size: 200
 antialias: 0
 characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

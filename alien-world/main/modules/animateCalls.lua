@@ -102,7 +102,7 @@ function M.animateButtonPress(node, d)
 	gui.animate(node, gui.PROP_COLOR, to_color, gui.EASING_IN, 0.1, d)
 
 	-- animate scale up to 95%
-	local s = 1.2
+	local s = 5.2
 	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_IN, 0.1, d)
 end
 
@@ -110,7 +110,7 @@ end
 function M.animateButtonRelease(node, d)
 
 	-- animate scale back to 100%
-	local s = 1.0
+	local s = 5
 	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_IN, 0.1, d)
 end
 

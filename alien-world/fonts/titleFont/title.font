@@ -1,0 +1,4 @@
+font: "/fonts/titleFont/super-metroid-title.ttf"
+material: "/builtins/fonts/font.material"
+size: 15
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

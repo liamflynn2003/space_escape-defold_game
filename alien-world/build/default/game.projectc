@@ -12,7 +12,7 @@ target_sdk_version = 34
 version_code = 1
 
 [bootstrap]
-main_collection = /level/endless_level.collectionc
+main_collection = /main/main.collectionc
 render = /builtins/render/default.renderc
 
 [collection]

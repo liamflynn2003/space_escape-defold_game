@@ -1,21 +1,20 @@
 name: "main"
-instances {
-  id: "camera"
-  prototype: "/player/camera.go"
-}
-collection_instances {
-  id: "level"
-  collection: "/level/level1.collection"
-  position {
-    y: 1.4072367
-  }
-}
-collection_instances {
-  id: "player"
-  collection: "/player/player.collection"
-  position {
-    x: 744.65106
-    y: 61.560272
-  }
-}
 scale_along_z: 0
+embedded_instances {
+  id: "main"
+  data: "components {\n"
+  "  id: \"main_menu\"\n"
+  "  component: \"/title-screen-gui/main_menu.gui\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main/main_scripts/main.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"level3_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/levels/endless_level.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}

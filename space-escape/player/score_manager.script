@@ -1,0 +1,16 @@
+local player_score = 0
+
+-- This function will be called when a message with the ID 'update_score' is sent
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_score") then
+		update_score(self, message.score)
+	end
+end
+
+-- So other objects can affect player score
+function update_score(self, score)
+	print("Attempting to update score via score manager")
+	-- Add the passed score to the player's current score
+	player_score = player_score + score
+	msg.post("/hud#player_hud", "update_score", { score = player_score })
+end

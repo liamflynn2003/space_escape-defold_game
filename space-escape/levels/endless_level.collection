@@ -275,3 +275,11 @@ embedded_instances {
   "}\n"
   ""
 }
+embedded_instances {
+  id: "score"
+  data: "components {\n"
+  "  id: \"score_manager\"\n"
+  "  component: \"/player/score_manager.script\"\n"
+  "}\n"
+  ""
+}

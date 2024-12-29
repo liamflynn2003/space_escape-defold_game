@@ -25,7 +25,7 @@ function on_message(self, message_id, message, sender)
 			go.delete(message.other_id)
 			go.delete()
 			-- Update player score (adding 100 for destroying an enemy)
-			msg.post("/player#player", "update_score", { score_to_add = 100 })
+			msg.post("/score#score_manager", "update_score", { score = 50 })
 		end
 
 		-- If ally collides with a bullet, destroy ally and update score
@@ -34,7 +34,7 @@ function on_message(self, message_id, message, sender)
 			go.delete(message.other_id)
 			go.delete()
 			-- Update player score (subtracting 200 for hitting an ally)
-			msg.post("/player#player", "update_score", { score_to_add = -200 })
+			msg.post("/score#score_manager", "update_score", { score = -200 })
 		end
 	end
 end

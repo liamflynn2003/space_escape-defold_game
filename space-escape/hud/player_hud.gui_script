@@ -22,28 +22,31 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
+	-- Handle health update
 	if message_id == hash("update_health") then
 		local health = message.health or 0
-
-		-- Update the visibility of each health node
 		for i, node in ipairs(self.health_nodes) do
 			gui.set_enabled(node, i <= health)
 		end
 	end
+
+	-- Handle ammo update
 	if message_id == hash("update_ammo") then
 		local ammo = message.ammo or 0
-
-		-- Update the visibility of each ammo node
-		for i, node in ipairs(self.ammo_nodes) do
-			gui.set_enabled(node, i <= ammo)
+			-- Enable/Disable ammo nodes based on ammo count
+			for i, node in ipairs(self.ammo_nodes) do
+				if i <= ammo then
+					gui.set_enabled(node, true)  -- Enable the node
+				else
+					gui.set_enabled(node, false)  -- Disable the node
+				end
+			end
 		end
-	end
 
+	-- Handle score update
 	if message_id == hash("update_score") then
 		local score = message.score or 0
-		-- Format the score as 4 digits
 		local formatted_score = string.format("%04d", score)
-		-- Update the text of the score node
 		gui.set_text(self.score_node, formatted_score)
 	end
 end

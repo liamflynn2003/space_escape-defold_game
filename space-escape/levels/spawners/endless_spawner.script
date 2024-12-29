@@ -1,6 +1,6 @@
-local SPAWN_INTERVAL = 3 -- Seconds between enemy spawns
-local ITEM_SPAWN_INTERVAL = 8 -- Seconds between item spawns
-local COIN_SPAWN_INTERVAL = 5 -- Seconds between coin spawns
+local SPAWN_INTERVAL = 3.5 -- Seconds between enemy spawns
+local ITEM_SPAWN_INTERVAL = 6 -- Seconds between item spawns
+local COIN_SPAWN_INTERVAL = 3 -- Seconds between coin spawns
 local DEFAULT_ITEM_SPAWN_POSITION = vmath.vector3(600, 145, 0) -- Item spawn position
 local DEFAULT_SPAWN_POSITION = vmath.vector3(600, 120, 0) -- Default spawn position
 local SKULL_SPAWN_Y = 220 -- Y position for skulls
@@ -16,6 +16,18 @@ function init(self)
 	self.item_spawn_timer = 0
 	coin_spawn_timer = 0
 	math.randomseed(os.time()) -- Seed the random number generator
+end
+
+function spawn_bullet()
+		-- Spawn the bullet
+		local spawn_position = vmath.vector3(190, 185, 0)
+		collectionfactory.create("#bulletfactory", spawn_position, nil, {}, 1)
+	end
+	
+function on_message(self, message_id, message, sender)
+	if message_id == hash("spawn_bullet") then
+		spawn_bullet()  -- Call the function to spawn the bullet
+	end
 end
 
 function check_recent_spawn(enemy_type)
@@ -134,6 +146,7 @@ function spawn_coin()
 	-- Spawn the coin
 	collectionfactory.create("#coinfactory", spawn_position, nil, {}, 1)
 end
+
 
 function update(self, dt)
 	self.spawn_timer = self.spawn_timer + dt

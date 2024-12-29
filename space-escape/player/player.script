@@ -1,17 +1,17 @@
 local target_y = 200  -- The target Y value to reach when jumping
 local jump_speed = 250 
 local fall_speed = 150  -- Lower the fall speed for more hang time
-local hang_time = 0.8  -- The time to stay at the peak height
+local hang_time = 0.8  -- The time to stay at the peak height 
 local hang_timer = 0  -- Timer to track how long we've been at peak height
 local is_jumping = false
 local is_falling = false
-
+local is_shooting = false
 local player_health = 4  -- Initialize player health to 4
 local HIT_INTERVAL = 1
 local hit_timer = 0
 local is_invincible = false
 
-local player_ammo = 1  -- Initialize ammo with 1
+local player_ammo = 1
 local player_score = 0
 
 local function play_animation(self, animation)
@@ -27,10 +27,11 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.is_jumping = false
 	self.is_falling = false
-	self.current_animation = hash("wizardIdle")
+	self.current_animation = hash("run")
 
 	player_health = 4
 	player_ammo = 1
+	msg.post("/hud#player_hud", "update_ammo", { ammo = player_ammo })
 end
 
 function on_input(self, action_id, action)
@@ -44,6 +45,25 @@ function on_input(self, action_id, action)
 			hang_timer = 0  -- Reset the hang timer to start falling immediately
 		end
 	end
+	if action_id == hash("shoot") and player_ammo > 0 then
+		player_ammo = player_ammo - 1
+		if action.pressed then
+			-- Cancel jump or falling animations
+			is_jumping = false
+			is_falling = false
+			is_shooting = true
+			msg.post("/spawner#endless_spawner", "spawn_bullet")
+			msg.post("/hud#player_hud", "update_ammo", { ammo = player_ammo })
+		end
+	end
+end
+
+-- So other objects can affect player score
+function update_score(self, score_to_add)
+	print("Attempting to update score via bullet hit")
+	-- Add the passed score to the player's current score
+	player_score = player_score + score_to_add
+	msg.post("/hud#player_hud", "update_score", { score = player_score })
 end
 
 function on_message(self, message_id, message, sender)
@@ -71,9 +91,11 @@ function on_message(self, message_id, message, sender)
 				end)
 			end
 		end
-		
+
 		-- Collision with ammo pickup
 		if message.other_group == hash("ammo") then
+			-- Log ammo before pickup
+
 			player_ammo = player_ammo + 1
 			msg.post("/hud#player_hud", "update_ammo", { ammo = player_ammo })
 
@@ -90,7 +112,7 @@ function on_message(self, message_id, message, sender)
 			go.delete(message.other_id)
 		end
 	end
-	
+
 	-- Collision with coin pickup
 	if message.other_group == hash("coin") then
 		player_score = player_score + 50
@@ -100,6 +122,35 @@ function on_message(self, message_id, message, sender)
 		go.delete(message.other_id)
 	end
 end
+
+function on_input(self, action_id, action)
+	if action_id == hash("jump") then
+		if action.pressed and not is_jumping and not is_falling then
+			-- Start the jump if the player is not already jumping or falling
+			is_jumping = true
+		elseif action.released and not is_falling then
+			-- Interrupt the hang time and start falling immediately when the jump button is released
+			is_falling = true
+			hang_timer = 0  -- Reset the hang timer to start falling immediately
+		end
+	end
+	if action_id == hash("shoot") and player_ammo > 0 then
+		if action.pressed then
+			-- Log ammo before shooting
+			-- Cancel jump or falling animations
+			is_jumping = false
+			is_falling = false
+			is_shooting = true
+			msg.post("/spawner#endless_spawner", "spawn_bullet")
+			player_ammo = player_ammo - 1  -- Reduce ammo by 1 when shooting
+			msg.post("/hud#player_hud", "update_ammo", { ammo = player_ammo })
+		end
+	end
+end
+
+
+local shooting_animation_duration = 0.5
+local shooting_timer = 0 
 
 function update(self, dt)
 	local pos = go.get_position()
@@ -118,7 +169,7 @@ function update(self, dt)
 		if pos.y >= target_y then
 			play_animation(self, hash("fall"))
 			pos.y = target_y  -- Keep the player at target_y to stop upward movement
-			is_jumping = false  
+			is_jumping = false  -- Stop jumping once target_y is reached
 
 			-- Start hang timer
 			hang_timer = hang_time
@@ -137,7 +188,7 @@ function update(self, dt)
 
 	-- Falling logic (only if jumping is done and hang time is over)
 	if is_falling then
-		-- Move player down after reaching target_y
+		-- Move player down after hang time
 		pos.y = pos.y - fall_speed * dt
 
 		-- When the player reaches the ground
@@ -146,6 +197,25 @@ function update(self, dt)
 			is_jumping = false
 			pos.y = 120
 			play_animation(self, hash("run"))
+		end
+	end
+
+	-- Shooting Animation
+	if is_shooting then
+		play_animation(self, hash("shoot"))
+		shooting_timer = shooting_timer + dt
+
+		-- Once the shooting animation is finished, stop the shooting animation and allow other animations
+		if shooting_timer >= shooting_animation_duration then
+			is_shooting = false  -- Stop the shooting animation
+			shooting_timer = 0  -- Reset the shooting timer
+			if pos.y > 120 then
+				is_falling = true
+			end
+			-- Only change animation to "run" or another appropriate state if falling/jumping has finished
+			if not is_falling then
+				play_animation(self, hash("run"))  -- Default back to run animation
+			end
 		end
 	end
 

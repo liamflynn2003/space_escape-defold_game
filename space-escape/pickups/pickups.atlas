@@ -1,7 +1,7 @@
 images {
-  image: "/pickups/weapon.png"
+  image: "/sprites/pickups/weapon.png"
 }
 images {
-  image: "/pickups/computer-console.png"
+  image: "/sprites/pickups/computer-console.png"
 }
 extrude_borders: 2

@@ -1,0 +1,40 @@
+local MOVE_SPEED = 250 -- The speed of the movement to the right
+
+function init(self)
+	self.speed = MOVE_SPEED -- Set default speed for movement
+end
+
+function update(self, dt)
+	-- Move the object to the right
+	local pos = go.get_position()
+	pos.x = pos.x + self.speed * dt
+	go.set_position(pos)
+
+	-- Destroy the object if it reaches X = 700
+	if pos.x >= 700 then
+		go.delete()
+	end
+end
+
+
+function on_message(self, message_id, message, sender)
+	-- If enemy collides with a bullet, destroy enemy and update score
+	if message_id == hash("contact_point_response") then
+		if message.other_group == hash("enemy") then
+			-- Destroy the enemy
+			go.delete(message.other_id)
+			go.delete()
+			-- Update player score (adding 100 for destroying an enemy)
+			msg.post("/player#player", "update_score", { score_to_add = 100 })
+		end
+
+		-- If ally collides with a bullet, destroy ally and update score
+		if message.other_group == hash("ally") then
+			-- Destroy the ally
+			go.delete(message.other_id)
+			go.delete()
+			-- Update player score (subtracting 200 for hitting an ally)
+			msg.post("/player#player", "update_score", { score_to_add = -200 })
+		end
+	end
+end

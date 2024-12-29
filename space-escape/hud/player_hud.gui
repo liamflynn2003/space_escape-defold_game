@@ -75,68 +75,6 @@ nodes {
 }
 nodes {
   position {
-    x: 30.0
-    y: 37.0
-  }
-  scale {
-    x: 1.9
-    y: 2.2
-    z: 1.9
-  }
-  type: TYPE_BOX
-  texture: "hud/ammo"
-  id: "ammobar"
-  layer: "hud"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  type: TYPE_BOX
-  texture: "hud/ammo"
-  id: "ammo"
-  parent: "ammobar"
-  layer: "hud"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 21.0
-  }
-  type: TYPE_BOX
-  texture: "hud/ammo"
-  id: "ammo1"
-  parent: "ammobar"
-  layer: "hud"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 42.0
-  }
-  type: TYPE_BOX
-  texture: "hud/ammo"
-  id: "ammo2"
-  parent: "ammobar"
-  layer: "hud"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 63.0
-  }
-  type: TYPE_BOX
-  texture: "hud/ammo"
-  id: "ammo3"
-  parent: "ammobar"
-  layer: "hud"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
     x: 550.0
     y: 328.0
   }
@@ -158,6 +96,74 @@ nodes {
   font: "text"
   id: "score"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 35.0
+  }
+  scale {
+    x: 2.5
+    y: 2.5
+    z: 2.5
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 89.0
+    y: 35.0
+  }
+  scale {
+    x: 2.5
+    y: 2.5
+    z: 2.5
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo1"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 141.0
+    y: 35.0
+  }
+  scale {
+    x: 2.5
+    y: 2.5
+    z: 2.5
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo2"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 194.0
+    y: 35.0
+  }
+  scale {
+    x: 2.5
+    y: 2.5
+    z: 2.5
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo3"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
 }
 layers {
   name: "hud"

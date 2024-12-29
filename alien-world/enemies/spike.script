@@ -1,0 +1,18 @@
+local DESTROY_X = -200 -- X position at which the enemy is destroyed
+local MOVE_SPEED = 300 -- The speed of the movement to the left
+
+function init(self)
+	self.speed = MOVE_SPEED -- Set default speed for movement
+end
+
+function update(self, dt)
+	-- Move the object to the left
+	local pos = go.get_position()
+	pos.x = pos.x - self.speed * dt
+	go.set_position(pos)
+
+	-- Check if the object has moved off-screen
+	if pos.x <= DESTROY_X then
+		go.delete() -- Destroy the enemy object
+	end
+end

@@ -96,20 +96,24 @@ nodes {
 }
 nodes {
   position {
-    y: -0.882353
+    y: -0.294118
   }
   scale {
-    x: 0.043526
-    y: 0.057607
-    z: 0.153216
+    x: 0.07
+    y: 0.08
+    z: 0.2
   }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    y: 0.843
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "Level 3"
-  font: "cutrimsRegular"
+  font: "title"
   id: "text2"
   parent: "selectLevel3"
   inherit_alpha: true
@@ -131,22 +135,23 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  position {
-    y: -0.588235
-  }
   scale {
-    x: 0.042272
-    y: 0.055947
-    z: 0.1488
+    x: 0.07
+    y: 0.0752
+    z: 0.188
   }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    y: 0.843
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "Level 1\n"
   ""
-  font: "cutrimsRegular"
+  font: "title"
   id: "text"
   parent: "selectLevel1"
   inherit_alpha: true
@@ -168,23 +173,54 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  position {
-    y: -0.588235
-  }
   scale {
-    x: 0.041931
-    y: 0.055496
-    z: 0.1476
+    x: 0.07
+    y: 0.08
+    z: 0.2
   }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    y: 0.843
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "Level 2"
-  font: "cutrimsRegular"
+  font: "title"
   id: "text1"
   parent: "selectLevel2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 318.0
+    y: 282.0
+  }
+  scale {
+    x: 0.846344
+    y: 0.846344
+    z: 0.846344
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    y: 0.843
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "SPACE ESCAPE"
+  font: "title"
+  id: "titletext1"
+  outline {
+    x: 0.2
+    y: 0.302
+    z: 0.702
+  }
+  layer: "menu"
   inherit_alpha: true
 }
 layers {

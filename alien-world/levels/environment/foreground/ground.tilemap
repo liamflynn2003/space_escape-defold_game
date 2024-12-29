@@ -2245,7 +2245,7 @@ layers {
 }
 layers {
   id: "foreground"
-  z: 0.1
+  z: 0.09
   cell {
     x: 56
     y: 0

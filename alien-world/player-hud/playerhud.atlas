@@ -1,0 +1,7 @@
+images {
+  image: "/player-hud/ammo.png"
+}
+images {
+  image: "/player-hud/health.png"
+}
+extrude_borders: 2

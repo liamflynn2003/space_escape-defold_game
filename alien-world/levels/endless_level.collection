@@ -1,6 +1,75 @@
 name: "default"
 scale_along_z: 0
 embedded_instances {
+  id: "main"
+  children: "enemy_spawner"
+  children: "player"
+  children: "scrolling_environment"
+  data: "components {\n"
+  "  id: \"playerhud\"\n"
+  "  component: \"/player-hud/playerhud.gui\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "enemy_spawner"
+  data: "components {\n"
+  "  id: \"enemy_spawner\"\n"
+  "  component: \"/levels/spawners/endless_spawner.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"alienfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/alien.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"frogfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/frog.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"monkfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/monk.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"skullfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/skull.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"spikefactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/spikes.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"warriorfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/enemies/warrior.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "player"
+  data: "components {\n"
+  "  id: \"spawn_player\"\n"
+  "  component: \"/levels/spawners/spawn_player.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"playerFactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/player/player.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
   id: "scrolling_environment"
   children: "environment"
   children: "environment1"
@@ -15,6 +84,22 @@ embedded_instances {
   "  component: \"/levels/environment/scroll.script\"\n"
   "}\n"
   ""
+  scale3 {
+    x: 1.1
+  }
+}
+embedded_instances {
+  id: "environment1"
+  children: "background1"
+  children: "foreground1"
+  data: "components {\n"
+  "  id: \"scroll\"\n"
+  "  component: \"/levels/environment/scroll.script\"\n"
+  "}\n"
+  ""
+  position {
+    x: 2953.72
+  }
   scale3 {
     x: 1.1
   }
@@ -95,36 +180,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "player"
-  data: "components {\n"
-  "  id: \"spawn_player\"\n"
-  "  component: \"/levels/spawners/spawn_player.script\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"playerFactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/player/player.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-}
-embedded_instances {
-  id: "environment1"
-  children: "background1"
-  children: "foreground1"
-  data: "components {\n"
-  "  id: \"scroll\"\n"
-  "  component: \"/levels/environment/scroll.script\"\n"
-  "}\n"
-  ""
-  position {
-    x: 2953.72
-  }
-  scale3 {
-    x: 1.1
-  }
-}
-embedded_instances {
   id: "background1"
   children: "backgroundmap1"
   children: "mountains1"
@@ -198,48 +253,4 @@ embedded_instances {
     x: 1.67825
     y: 1.5
   }
-}
-embedded_instances {
-  id: "enemy_spawner"
-  data: "components {\n"
-  "  id: \"enemy_spawner\"\n"
-  "  component: \"/levels/spawners/endless_spawner.script\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"frogfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/frog.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"skullfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/skull.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"monkfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/monk.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"warriorfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/warrior.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"alienfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/alien.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"spikefactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/enemies/spikes.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
 }

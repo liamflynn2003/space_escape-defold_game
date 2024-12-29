@@ -1,6 +1,6 @@
 local SPAWN_INTERVAL = 3 -- Seconds between spawns
 local DEFAULT_SPAWN_POSITION = vmath.vector3(600, 125, 0) -- Default spawn position
-local SKULL_SPAWN_Y = 250 -- Y position for skulls
+local SKULL_SPAWN_Y = 220 -- Y position for skulls
 local SPIKE_SPAWN_Y = 100 -- Y position for spikes
 local SPIKE_Z_POSITION = 1.0 -- Z position for spikes, in front of the foreground layer
 

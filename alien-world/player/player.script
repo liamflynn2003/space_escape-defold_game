@@ -4,7 +4,12 @@ local fall_speed = 150  -- Lower the fall speed for more hang time
 local hang_time = 0.5  -- The time to stay at the peak height
 local hang_timer = 0  -- Timer to track how long we've been at peak height
 local is_jumping = false
-local is_falling = false 
+local is_falling = false
+
+local player_health = 4  -- Initialize player health to 4
+local HIT_INTERVAL = 1.0
+local hit_timer = 0
+local is_invincible = false
 
 local function play_animation(self, animation)
 	-- Plays the animation within input parameters, unless the same animation is already playing
@@ -20,11 +25,16 @@ function init(self)
 	self.is_jumping = false
 	self.is_falling = false
 	self.current_animation = hash("wizardIdle")
+
+	-- Set player health to 4 (in case you want to reset it)
+	player_health = 4
+	print("Player health initialized to: " .. player_health)
 end
 
 function update(self, dt)
 	local pos = go.get_position()
-
+	hit_timer = hit_timer + dt
+	
 	-- Jumping logic
 	if is_jumping then
 		play_animation(self, hash("jump"))
@@ -78,10 +88,40 @@ function on_input(self, action_id, action)
 		if action.pressed and not is_jumping and not is_falling then
 			-- Start the jump if the player is not already jumping or falling
 			is_jumping = true
+			print("Player initiated jump.")
 		elseif action.released and not is_falling then
 			-- Interrupt the hang time and start falling immediately when the jump button is released
 			is_falling = true
 			hang_timer = 0  -- Reset the hang timer to start falling immediately
+			print("Player released jump, starting to fall.")
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	-- Handle collision with enemy objects
+	if message_id == hash("contact_point_response") then
+		print("Collision detected! Group: " .. tostring(message.group))
+
+		-- Check if the collision object is in the "enemy" group and if enough time has passed since the last hit
+		if message.other_group == hash("enemy") then
+			-- Only process the hit if the hit interval has passed and player isn't invincible
+			if hit_timer >= HIT_INTERVAL and not is_invincible then
+				-- Reset the hit timer and register the health deduction
+				hit_timer = 0
+				print("Player health before collision: " .. player_health)
+
+				-- Reduce health by 1 when colliding with an enemy
+				player_health = player_health - 1
+				print("Player health after collision: " .. player_health)
+
+				-- Set invincibility for a short time (to prevent multiple hits from the same enemy)
+				is_invincible = true
+				-- Set invincibility duration (for example, 0.5 seconds)
+				timer.delay(0.5, false, function()
+					is_invincible = false  -- Remove invincibility after the delay
+				end)
+			end
 		end
 	end
 end

@@ -1,0 +1,166 @@
+script: "/hud/player_hud.gui_script"
+fonts {
+  name: "text"
+  font: "/fonts/smallFont/text.font"
+}
+fonts {
+  name: "title"
+  font: "/fonts/titleFont/title.font"
+}
+textures {
+  name: "hud"
+  texture: "/hud/playerhud.atlas"
+}
+nodes {
+  position {
+    x: 29.0
+    y: 325.0
+  }
+  scale {
+    x: 2.7
+    y: 2.7
+    z: 2.7
+  }
+  type: TYPE_BOX
+  texture: "hud/health"
+  id: "healthbar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  type: TYPE_BOX
+  texture: "hud/health"
+  id: "health"
+  parent: "healthbar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 15.0
+  }
+  type: TYPE_BOX
+  texture: "hud/health"
+  id: "health1"
+  parent: "healthbar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 30.0
+  }
+  type: TYPE_BOX
+  texture: "hud/health"
+  id: "health2"
+  parent: "healthbar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 45.0
+  }
+  type: TYPE_BOX
+  texture: "hud/health"
+  id: "health3"
+  parent: "healthbar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 30.0
+    y: 37.0
+  }
+  scale {
+    x: 1.9
+    y: 2.2
+    z: 1.9
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammobar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo"
+  parent: "ammobar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 21.0
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo1"
+  parent: "ammobar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 42.0
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo2"
+  parent: "ammobar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 63.0
+  }
+  type: TYPE_BOX
+  texture: "hud/ammo"
+  id: "ammo3"
+  parent: "ammobar"
+  layer: "hud"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 550.0
+    y: 328.0
+  }
+  scale {
+    x: 0.32
+    y: 0.32
+    z: 0.32
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    y: 0.843
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "0000"
+  font: "text"
+  id: "score"
+  inherit_alpha: true
+}
+layers {
+  name: "hud"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

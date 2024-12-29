@@ -1,0 +1,49 @@
+function init(self)
+	-- Store references to the health and ammo nodes
+	self.health_nodes = {
+		gui.get_node("health"),
+		gui.get_node("health1"),
+		gui.get_node("health2"),
+		gui.get_node("health3")
+	}
+	self.ammo_nodes = {
+		gui.get_node("ammo"),
+		gui.get_node("ammo1"),
+		gui.get_node("ammo2"),
+		gui.get_node("ammo3")
+	}
+
+	self.score_node = gui.get_node("score")
+
+	-- Start with all ammo nodes disabled
+	for _, node in ipairs(self.ammo_nodes) do
+		gui.set_enabled(node, false)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_health") then
+		local health = message.health or 0
+
+		-- Update the visibility of each health node
+		for i, node in ipairs(self.health_nodes) do
+			gui.set_enabled(node, i <= health)
+		end
+	end
+	if message_id == hash("update_ammo") then
+		local ammo = message.ammo or 0
+
+		-- Update the visibility of each ammo node
+		for i, node in ipairs(self.ammo_nodes) do
+			gui.set_enabled(node, i <= ammo)
+		end
+	end
+
+	if message_id == hash("update_score") then
+		local score = message.score or 0
+		-- Format the score as 4 digits
+		local formatted_score = string.format("%04d", score)
+		-- Update the text of the score node
+		gui.set_text(self.score_node, formatted_score)
+	end
+end

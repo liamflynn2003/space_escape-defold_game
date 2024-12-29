@@ -33,6 +33,7 @@ embedded_instances {
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
+  "      x: -1.818182\\n"
   "      y: 18.0\\n"
   "    }\\n"
   "    rotation {\\n"
@@ -40,16 +41,19 @@ embedded_instances {
   "    index: 0\\n"
   "    count: 3\\n"
   "  }\\n"
-  "  data: 8.641975\\n"
-  "  data: 17.602783\\n"
+  "  data: 6.936704\\n"
+  "  data: 16.72756\\n"
   "  data: 10.0\\n"
   "}\\n"
   "\"\n"
   "}\n"
   ""
+  position {
+    x: 31.0
+  }
   scale3 {
     x: 2.2
     y: 2.2
-    z: 2.2
+    z: 2.5
   }
 }

@@ -1,13 +1,10 @@
 name: "level3"
 scale_along_z: 0
 embedded_instances {
-  id: "main"
-  children: "enemy_spawner"
-  children: "player"
-  children: "scrolling_environment"
+  id: "hud"
   data: "components {\n"
-  "  id: \"playerhud\"\n"
-  "  component: \"/player-hud/playerhud.gui\"\n"
+  "  id: \"player_hud\"\n"
+  "  component: \"/hud/player_hud.gui\"\n"
   "}\n"
   ""
 }

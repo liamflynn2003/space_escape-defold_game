@@ -1,6 +1,6 @@
-image: "/player-hud/ammo.png"
-tile_width: 20
-tile_height: 20
+image: "/hud/health.png"
+tile_width: 14
+tile_height: 19
 collision_groups: "default"
 animations {
   id: "anim"

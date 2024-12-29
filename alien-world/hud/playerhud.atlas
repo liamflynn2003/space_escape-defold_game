@@ -1,0 +1,7 @@
+images {
+  image: "/hud/ammo.png"
+}
+images {
+  image: "/hud/health.png"
+}
+extrude_borders: 2

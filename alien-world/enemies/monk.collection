@@ -41,13 +41,16 @@ embedded_instances {
   "    index: 0\\n"
   "    count: 3\\n"
   "  }\\n"
-  "  data: 10.0\\n"
-  "  data: 15.227204\\n"
+  "  data: 7.282541\\n"
+  "  data: 9.691862\\n"
   "  data: 10.0\\n"
   "}\\n"
   "\"\n"
   "}\n"
   ""
+  position {
+    x: 32.0
+  }
   scale3 {
     x: 2.5
     y: 2.5

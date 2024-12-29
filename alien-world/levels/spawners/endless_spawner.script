@@ -2,23 +2,12 @@ local SPAWN_INTERVAL = 3 -- Seconds between spawns
 local DEFAULT_SPAWN_POSITION = vmath.vector3(600, 125, 0) -- Default spawn position
 local SKULL_SPAWN_Y = 220 -- Y position for skulls
 local SPIKE_SPAWN_Y = 100 -- Y position for spikes
-local SPIKE_Z_POSITION = 1.0 -- Z position for spikes, in front of the foreground layer
 
 local spawn_history = {} -- A table to track the last 3 enemies spawned
 
 function init(self)
 	self.spawn_timer = 0
-end
-
-function get_random_enemy_type()
-	-- Generate a random enemy type, ensuring no enemy is repeated 3 times in a row
-	local enemy_type
-
-	repeat
-		enemy_type = math.random(1, 6) -- 1 = Frog, 2 = Skull, 3 = Alien, 4 = Warrior, 5 = Monk, 6 = Spike
-	until not check_recent_spawn(enemy_type)
-
-	return enemy_type
+	math.randomseed(os.time())  -- Seed the random number generator
 end
 
 function check_recent_spawn(enemy_type)
@@ -30,6 +19,17 @@ function check_recent_spawn(enemy_type)
 		end
 	end
 	return count >= 2
+end
+
+function get_random_enemy_type()
+	-- Generate a random enemy type, ensuring no enemy is repeated 3 times in a row
+	local enemy_type
+
+	repeat
+		enemy_type = math.random(1, 6) -- 1 = Frog, 2 = Skull, 3 = Alien, 4 = Warrior, 5 = Monk, 6 = Spike
+	until not check_recent_spawn(enemy_type)
+
+	return enemy_type
 end
 
 function spawn_enemy()
@@ -62,7 +62,6 @@ function spawn_enemy()
 	else
 		-- Spawn spike (new spike factory) at y = 100 and z = 1.0 (in front of the foreground)
 		spawn_position.y = SPIKE_SPAWN_Y
-		spawn_position.z = SPIKE_Z_POSITION  -- Set the z position to in front of the foreground (0.9)
 		enemy_id = collectionfactory.create("#spikefactory", spawn_position, nil, {}, 1)
 	end
 
@@ -79,7 +78,7 @@ function spawn_enemy()
 		table.remove(spawn_history, 1)
 	end
 
-	-- 30% chance to spawn a skull in addition to the primary enemy
+	-- 10% chance to spawn a skull in addition to the primary enemy
 	local chance_to_spawn_skull = math.random(1, 100)
 	if chance_to_spawn_skull <= 10 then
 		-- Spawn an additional skull

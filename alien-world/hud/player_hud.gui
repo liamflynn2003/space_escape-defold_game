@@ -1,7 +1,7 @@
-script: ""
+script: "/hud/player_hud.gui_script"
 textures {
   name: "hud"
-  texture: "/player-hud/playerhud.atlas"
+  texture: "/hud/playerhud.atlas"
 }
 nodes {
   position {

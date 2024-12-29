@@ -16,11 +16,3 @@ function update(self, dt)
 		go.delete() -- Destroy the enemy object
 	end
 end
-
-function on_collision(self, other_id, self_position, other_position, self_normal, other_normal)
-	if other_id == hash("player") then
-		-- Send a message to the player
-		print("Enemy collided with player!")
-		msg.post("player", "decrease_health", {amount = 1})
-	end
-end

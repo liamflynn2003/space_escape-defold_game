@@ -26,9 +26,7 @@ function init(self)
 	self.is_falling = false
 	self.current_animation = hash("wizardIdle")
 
-	-- Set player health to 4 (in case you want to reset it)
 	player_health = 4
-	print("Player health initialized to: " .. player_health)
 end
 
 function update(self, dt)
@@ -81,6 +79,13 @@ function update(self, dt)
 
 	-- Update player position
 	go.set_position(pos)
+
+	-- Player Death
+	if player_health == 0 then
+		-- Send a message to switch to the "game_over" collection
+		msg.post("main:/main#main", "start_gameover")
+		return  -- Exit the update function so the game doesn't continue updating
+	end
 end
 
 function on_input(self, action_id, action)
@@ -88,12 +93,10 @@ function on_input(self, action_id, action)
 		if action.pressed and not is_jumping and not is_falling then
 			-- Start the jump if the player is not already jumping or falling
 			is_jumping = true
-			print("Player initiated jump.")
 		elseif action.released and not is_falling then
 			-- Interrupt the hang time and start falling immediately when the jump button is released
 			is_falling = true
 			hang_timer = 0  -- Reset the hang timer to start falling immediately
-			print("Player released jump, starting to fall.")
 		end
 	end
 end
@@ -101,7 +104,6 @@ end
 function on_message(self, message_id, message, sender)
 	-- Handle collision with enemy objects
 	if message_id == hash("contact_point_response") then
-		print("Collision detected! Group: " .. tostring(message.group))
 
 		-- Check if the collision object is in the "enemy" group and if enough time has passed since the last hit
 		if message.other_group == hash("enemy") then
@@ -109,11 +111,9 @@ function on_message(self, message_id, message, sender)
 			if hit_timer >= HIT_INTERVAL and not is_invincible then
 				-- Reset the hit timer and register the health deduction
 				hit_timer = 0
-				print("Player health before collision: " .. player_health)
 
 				-- Reduce health by 1 when colliding with an enemy
 				player_health = player_health - 1
-				print("Player health after collision: " .. player_health)
 
 				-- Set invincibility for a short time (to prevent multiple hits from the same enemy)
 				is_invincible = true

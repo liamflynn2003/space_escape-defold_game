@@ -3,16 +3,15 @@
 
 Lua Script File:  	main.script
 
-Script Summary: Provides the general support functions related to game actions.   This
+Script Summary: Provides the general support functions related to game actions. This
 script includes the following features:
 
--  	Initializes the GameState and sets main menu as the opening game level
--  	Serves as the Controller between the main menu, Level1 and Level2 (loading/unloading
-collections; enabling/disabling GUIs and message control between game levels.
+- Initializes the GameState and sets main menu as the opening game level
+- Serves as the Controller between the main menu, Level1, Level2, and Game Over (loading/unloading
+collections; enabling/disabling GUIs and message control between game levels).
 
 =============================================================================================
 --]]
-
 
 -- ------------------------------------------------------------------------------------------
 -- Initialization 
@@ -25,18 +24,16 @@ function init(self)
     self.state = "MAIN_MENU"			
 end
 
-
 -- ------------------------------------------------------------------------------------------
 -- Message Processing  
 -- ------------------------------------------------------------------------------------------
 function on_message(self, message_id, message, sender)
+    -- Handling transitions between game levels
 
-    -- When setting the GameState to Main Menu -- unload the Level1 and Level2 Collections 
-    -- via their proxies and enable the MainMenu GUI
+    -- When starting the main menu
     if message_id == hash("start_main_menu") then
         if self.state ~= "MAIN_MENU" then
-            -- Upon receipt of a 'to_main_menu' message -- ensure that the 
-            -- Level1 and Level2 collections are unloaded		
+            -- Unload other levels and game over screen if necessary
             if self.state == "LEVEL1_RUNNING" then
                 msg.post("#level1_proxy", "unload")
             end
@@ -49,38 +46,75 @@ function on_message(self, message_id, message, sender)
                 msg.post("#level3_proxy", "unload")
             end
 
+            if self.state == "GAMEOVER_RUNNING" then
+                msg.post("#gameover_proxy", "unload")
+            end
         end
 
-        -- Enable both the Main Menu and the Menu Panel Background
+        -- Enable the main menu
         msg.post("#main_menu", "enable")
         self.state = "MAIN_MENU"
 
-
-
-        -- When switching to the Level1 Collection -- disable the Menu Panel Background and
-        -- the Menu; and load the Level1 Collection via its proxy
+        -- When starting level 1
     elseif message_id == hash("start_level1") then
+        -- Ensure the game over screen is unloaded before loading level 1
+        if self.state == "GAMEOVER_RUNNING" then
+            msg.post("#gameover_proxy", "unload")
+        end
+
         msg.post("#level1_proxy", "load")
         msg.post("#main_menu", "disable")
+        self.state = "LEVEL1_RUNNING"
 
-
-        -- When switching to the Level2 Collection -- disable the Menu Panel Background and
-        -- the Menu; and load the Level2 Collection via its proxy
+        -- When starting level 2
     elseif message_id == hash("start_level2") then
-        print("starting level 2")
+        -- Ensure the game over screen is unloaded before loading level 2
+        if self.state == "GAMEOVER_RUNNING" then
+            msg.post("#gameover_proxy", "unload")
+        end
+
         msg.post("#level2_proxy", "load")
         msg.post("#main_menu", "disable")
+        self.state = "LEVEL2_RUNNING"
 
-        -- When switching to the Level3 Collection -- disable the Menu Panel Background and
-        -- the Menu; and load the Level3 Collection via its proxy
+        -- When starting level 3
     elseif message_id == hash("start_level3") then
-        print("starting level 3")
+        -- Ensure the game over screen is unloaded before loading level 3
+        if self.state == "GAMEOVER_RUNNING" then
+            msg.post("#gameover_proxy", "unload")
+        end
+
         msg.post("#level3_proxy", "load")
-        msg.post("#main_menu", "disable")	
+        msg.post("#main_menu", "disable")
+        self.state = "LEVEL3_RUNNING"
 
+        -- When starting the game over screen
+    elseif message_id == hash("start_gameover") then
+        print("opening game over screen")
 
-        -- Upon confirmation that a Level1 or Level2 collection has been loaded -- post messages
-        -- to set the current state, enable the level and initiate it
+        -- Unload the active level to free up resources
+        if self.state == "LEVEL1_RUNNING" then
+            msg.post("#level1_proxy", "unload")
+        end
+
+        if self.state == "LEVEL2_RUNNING" then
+            msg.post("#level2_proxy", "unload")
+        end
+
+        if self.state == "LEVEL3_RUNNING" then
+            msg.post("#level3_proxy", "unload")
+        end
+
+        -- Unload the main menu if it's active
+        if self.state == "MAIN_MENU" then
+            msg.post("#main_menu", "disable")
+        end
+
+        -- Now load the game over collection
+        msg.post("#gameover_proxy", "load")
+        self.state = "GAMEOVER_RUNNING"
+
+        -- Handle proxy_loaded for collection enable
     elseif message_id == hash("proxy_loaded") then
         if sender == msg.url("#level1_proxy") then
             msg.post(sender, "enable")
@@ -97,5 +131,9 @@ function on_message(self, message_id, message, sender)
             self.state = "LEVEL3_RUNNING"
         end
 
+        if sender == msg.url("#gameover_proxy") then
+            msg.post(sender, "enable")
+            self.state = "GAMEOVER_RUNNING"
+        end
     end    
 end

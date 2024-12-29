@@ -1,0 +1,13 @@
+images {
+  image: "/gui/button-options.png"
+}
+images {
+  image: "/gui/button-start.png"
+}
+images {
+  image: "/gui/title-screen-background.png"
+}
+images {
+  image: "/gui/blank-button.png"
+}
+extrude_borders: 2

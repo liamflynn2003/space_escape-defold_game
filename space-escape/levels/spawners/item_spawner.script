@@ -20,7 +20,6 @@ function init(self)
 	-- Check the current object URL and set the difficulty
 	if current_obj_url == hash("/item_spawner_level2") then
 		difficulty = 2
-		print("Item difficulty set to 2")
 	elseif current_obj_url == hash("/item_spawner_level3") then
 		difficulty = 3
 		print("Item difficulty set to 3")

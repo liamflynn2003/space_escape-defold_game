@@ -1,0 +1,21 @@
+-- controls.script
+
+local shoot_button
+local jump_button
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	shoot_button = gui.get_node("shoot_button")
+	jump_button = gui.get_node("jump_button")
+end
+
+function update(self, dt)
+	-- Get touch input
+	local touches = input.get_touch()
+	for _, touch in ipairs(touches) do
+		if gui.pick_node(shoot_button, touch.x, touch.y) and touch.pressed then
+			msg.post("/item_spawner", "spawn_bullet")
+		end
+	end
+end
+

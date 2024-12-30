@@ -1,0 +1,90 @@
+script: ""
+fonts {
+  name: "text"
+  font: "/fonts/titleFont/title.font"
+}
+nodes {
+  position {
+    x: 579.0
+    y: 88.0
+  }
+  scale {
+    x: 0.461847
+    y: 0.461847
+    z: 0.461847
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.502
+    z: 0.902
+  }
+  type: TYPE_BOX
+  id: "jump"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.72
+    y: 0.72
+    z: 0.72
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "JUMP"
+  font: "text"
+  id: "text"
+  parent: "jump"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 579.0
+    y: 33.0
+  }
+  scale {
+    x: 0.460346
+    y: 0.460346
+    z: 0.460346
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.302
+    y: 0.102
+    z: 0.302
+  }
+  type: TYPE_BOX
+  id: "shoot"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.6192
+    y: 0.6192
+    z: 0.6192
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "SHOOT\n"
+  ""
+  font: "text"
+  id: "text1"
+  parent: "shoot"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

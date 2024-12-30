@@ -8,3 +8,18 @@ embedded_instances {
   "}\n"
   ""
 }
+embedded_instances {
+  id: "audio"
+  data: "components {\n"
+  "  id: \"play\"\n"
+  "  component: \"/audio/play.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/audio/gameover.wav\\\"\\n"
+  "looping: 1\\n"
+  "\"\n"
+  "}\n"
+  ""
+}

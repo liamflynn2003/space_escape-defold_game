@@ -25,6 +25,31 @@ function init(self)
 end
 
 -- ------------------------------------------------------------------------------------------
+-- Stop Sound Utility Function
+-- ------------------------------------------------------------------------------------------
+local function stop_current_level_sound(state)
+    if state == "LEVEL1_RUNNING" then
+        msg.post("main:/audio#sound", "stop_sound")
+    elseif state == "LEVEL2_RUNNING" then
+        msg.post("main:/audio#sound", "stop_sound")
+    elseif state == "LEVEL3_RUNNING" then
+        msg.post("main:/audio#sound", "stop_sound")
+    elseif state == "MAIN_MENU" then
+        msg.post("main:/audio#sound", "stop_sound")
+    elseif state == "GAMEOVER_RUNNING" then
+        msg.post("main:/audio#sound", "stop_sound")
+    end
+end
+
+-- ------------------------------------------------------------------------------------------
+-- Play Sound Utility Function
+-- ------------------------------------------------------------------------------------------
+local function play_main_menu_sound()
+    -- Play the sound for the main menu screen
+    msg.post("main:/audio#sound", "play_sound")
+end
+
+-- ------------------------------------------------------------------------------------------
 -- Message Processing  
 -- ------------------------------------------------------------------------------------------
 function on_message(self, message_id, message, sender)
@@ -33,6 +58,7 @@ function on_message(self, message_id, message, sender)
     -- When starting the main menu
     if message_id == hash("start_main_menu") then
         if self.state ~= "MAIN_MENU" then
+            stop_current_level_sound(self.state)
             -- Unload other levels and game over screen if necessary
             if self.state == "LEVEL1_RUNNING" then
                 msg.post("#level1_proxy", "unload")
@@ -55,9 +81,12 @@ function on_message(self, message_id, message, sender)
         msg.post("#main_menu", "enable")
         self.state = "MAIN_MENU"
 
+        -- Play sound when transitioning to the main menu
+        play_main_menu_sound()
+
         -- When starting level 1
     elseif message_id == hash("start_level1") then
-        -- Ensure the game over screen is unloaded before loading level 1
+        stop_current_level_sound(self.state)
         if self.state == "GAMEOVER_RUNNING" then
             msg.post("#gameover_proxy", "unload")
         end
@@ -68,7 +97,7 @@ function on_message(self, message_id, message, sender)
 
         -- When starting level 2
     elseif message_id == hash("start_level2") then
-        -- Ensure the game over screen is unloaded before loading level 2
+        stop_current_level_sound(self.state)
         if self.state == "GAMEOVER_RUNNING" then
             msg.post("#gameover_proxy", "unload")
         end
@@ -79,7 +108,7 @@ function on_message(self, message_id, message, sender)
 
         -- When starting level 3
     elseif message_id == hash("start_level3") then
-        -- Ensure the game over screen is unloaded before loading level 3
+        stop_current_level_sound(self.state)
         if self.state == "GAMEOVER_RUNNING" then
             msg.post("#gameover_proxy", "unload")
         end
@@ -90,7 +119,8 @@ function on_message(self, message_id, message, sender)
 
         -- When starting the game over screen
     elseif message_id == hash("start_gameover") then
-        print("opening game over screen")
+        stop_current_level_sound(self.state)
+        print("Opening game over screen")
 
         -- Unload the active level to free up resources
         if self.state == "LEVEL1_RUNNING" then

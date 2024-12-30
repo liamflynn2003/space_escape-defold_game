@@ -80,7 +80,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 169.67772
+    y: 69.67772
   }
   scale {
     x: 6.37008
@@ -136,6 +136,68 @@ nodes {
   text: "GAME OVER"
   font: "title"
   id: "gameovertext1"
+  outline {
+    x: 0.2
+    y: 0.302
+    z: 0.702
+  }
+  layer: "menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 474.0
+    y: 184.0
+  }
+  scale {
+    x: 0.528533
+    y: 0.528533
+    z: 0.528533
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.502
+    z: 0.902
+  }
+  type: TYPE_TEXT
+  text: "0000"
+  font: "title"
+  id: "score"
+  outline {
+    x: 0.2
+    y: 0.302
+    z: 0.702
+  }
+  layer: "menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 221.0
+    y: 184.0
+  }
+  scale {
+    x: 0.604531
+    y: 0.604531
+    z: 0.604531
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.502
+    z: 0.902
+  }
+  type: TYPE_TEXT
+  text: "HI-SCORE:"
+  font: "title"
+  id: "scoreText"
   outline {
     x: 0.2
     y: 0.302

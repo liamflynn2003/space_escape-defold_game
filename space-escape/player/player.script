@@ -103,11 +103,12 @@ function on_message(self, message_id, message, sender)
 			-- Destroy the health object
 			go.delete(message.other_id)
 		end
+
 	end
 
 	-- Collision with coin pickup
 	if message.other_group == hash("coin") then
-		msg.post("/score#score_manager", "update_score", { score = 50 })
+		msg.post("main:/main#main", "update_score", { score = 50 })
 		-- Destroy the coin object
 		go.delete(message.other_id)
 	end

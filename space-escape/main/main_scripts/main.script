@@ -16,12 +16,25 @@ collections; enabling/disabling GUIs and message control between game levels).
 -- ------------------------------------------------------------------------------------------
 -- Initialization 
 -- ------------------------------------------------------------------------------------------
+local player_score = 0  -- Define the player score in the main script
 function init(self)	
     -- Set the main menu as the starting Game Level for this application
     msg.post(".", "start_main_menu")
-
     -- Set a Script Property with the initial GameState Status
     self.state = "MAIN_MENU"			
+end
+
+---- Score Handling-- Function to update the score
+function update_score(self, score)
+    player_score = player_score + score
+    print("Updated Score: " .. player_score)
+    -- Send the updated score to HUD
+    msg.post("level3:/hud#player_hud", "update_score", { score = player_score })
+end
+
+-- Function to retrieve the current score
+function get_player_score()
+    return player_score
 end
 
 -- ------------------------------------------------------------------------------------------
@@ -53,6 +66,20 @@ end
 -- Message Processing  
 -- ------------------------------------------------------------------------------------------
 function on_message(self, message_id, message, sender)
+    
+    -- Handle score-related messages
+    if message_id == hash("update_score") then
+        update_score(self, message.score)
+    end
+    
+    -- When the game over collection is fully loaded, send the score
+    if message_id == hash("proxy_loaded") then
+        if sender == msg.url("#gameover_proxy") then
+            -- Send the display_score message once the game over collection is loaded
+            msg.post("gameover:/main#game_over", "display_score", { score = player_score })
+        end
+    end
+    
     -- Handling transitions between game levels
 
     -- When starting the main menu
@@ -69,7 +96,11 @@ function on_message(self, message_id, message, sender)
             end
 
             if self.state == "LEVEL3_RUNNING" then
-                msg.post("#level3_proxy", "unload")
+                -- Add a delay of 2 seconds before unloading level 3
+                timer.delay(2, false, function()
+                    -- Unload level 3 after the delay
+                    msg.post("#level3_proxy", "unload")
+                end)
             end
 
             if self.state == "GAMEOVER_RUNNING" then
@@ -122,7 +153,7 @@ function on_message(self, message_id, message, sender)
         stop_current_level_sound(self.state)
         print("Opening game over screen")
 
-        -- Unload the active level to free up resources
+        -- Unload the active level and menu
         if self.state == "LEVEL1_RUNNING" then
             msg.post("#level1_proxy", "unload")
         end
@@ -135,7 +166,6 @@ function on_message(self, message_id, message, sender)
             msg.post("#level3_proxy", "unload")
         end
 
-        -- Unload the main menu if it's active
         if self.state == "MAIN_MENU" then
             msg.post("#main_menu", "disable")
         end
@@ -144,6 +174,10 @@ function on_message(self, message_id, message, sender)
         msg.post("#gameover_proxy", "load")
         self.state = "GAMEOVER_RUNNING"
 
+        -- Wait for the collection to be fully loaded
+        -- Listen for the proxy_loaded message to know when the game over screen is ready
+        msg.post("#gameover_proxy", "proxy_loaded")
+        
         -- Handle proxy_loaded for collection enable
     elseif message_id == hash("proxy_loaded") then
         if sender == msg.url("#level1_proxy") then

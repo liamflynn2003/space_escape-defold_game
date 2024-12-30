@@ -20,21 +20,20 @@ end
 function on_message(self, message_id, message, sender)
 	-- If enemy collides with a bullet, destroy enemy and update score
 	if message_id == hash("contact_point_response") then
-		if message.other_group == hash("enemy") then
-			-- Destroy the enemy
+			-- Update player score (adding 100 for destroying an enemy)
+			msg.post("main:/main#main", "update_score", { score = 50 })
+			-- Destroy enemy and bullet
 			go.delete(message.other_id)
 			go.delete()
-			-- Update player score (adding 100 for destroying an enemy)
-			msg.post("/score#score_manager", "update_score", { score = 50 })
+
 		end
 
 		-- If ally collides with a bullet, destroy ally and update score
 		if message.other_group == hash("ally") then
+			-- Update player score (subtracting 200 for hitting an ally)
+			msg.post("main:/main#main", "update_score", { score = -200 })
 			-- Destroy the ally
 			go.delete(message.other_id)
 			go.delete()
-			-- Update player score (subtracting 200 for hitting an ally)
-			msg.post("/score#score_manager", "update_score", { score = -200 })
 		end
-	end
 end

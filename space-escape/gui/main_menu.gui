@@ -224,6 +224,47 @@ nodes {
   layer: "menu"
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 528.0
+    y: 46.82865
+  }
+  scale {
+    x: 2.919048
+    y: 3.605321
+    z: 0.721065
+  }
+  type: TYPE_BOX
+  texture: "graphicAssets/blank-button"
+  id: "resetHiScore"
+  layer: "menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -0.294118
+  }
+  scale {
+    x: 0.059976
+    y: 0.068544
+    z: 0.17136
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    y: 0.843
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Reset Score"
+  font: "title"
+  id: "text3"
+  parent: "resetHiScore"
+  inherit_alpha: true
+}
 layers {
   name: "background"
 }

@@ -89,7 +89,6 @@ function M.animateButton1(node, d)
 	d, M.animateButton2)
 end
 
-
 function M.animateButtonPress(node, d)
 	DEBUG_MESSAGE2 = "Executing M.animateButtonPress"
 	-- get the current color and set alpha to 0.85 to fade the button
@@ -104,6 +103,17 @@ function M.animateButtonPress(node, d)
 	-- animate scale up to 95%
 	local s = 5.2
 	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_IN, 0.1, d)
+end
+
+function M.animateResetHiScoreButton(node)
+	s = 2
+	-- Make the button invisible at first (alpha = 0 and scale = small)
+	gui.set_color(node, vmath.vector4(1, 1, 1, 0))  -- Set alpha to 0 (invisible)
+	gui.set_scale(node, vmath.vector4(s, s, s, 0))  -- Set scale to small
+
+	-- Animate the button to fade in (alpha from 0 to 1) and scale to normal (1, 1)
+	gui.animate(node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUT, 5, 0)  -- Fade in
+	gui.animate(node, gui.PROP_SCALE, vmath.vector4(s, s, s, 0), gui.EASING_INOUT, 2, 0)  -- Scale back to normal size
 end
 
 

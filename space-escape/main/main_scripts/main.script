@@ -65,6 +65,14 @@ function save_high_score()
     end
 end
 
+-- Function to reset the high score to 0
+function reset_hi_score()
+    high_score = 0  -- Reset the high score to 0
+
+    -- Save the new high score (0) to the file
+    save_high_score()
+    load_high_score()
+end
 -- ------------------------------------------------------------------------------------------
 -- Score Handling
 -- ------------------------------------------------------------------------------------------
@@ -118,7 +126,9 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("update_score") then
         update_score(self, message.score)
     end
-    
+    if message_id == hash("reset_hi_score") then
+        reset_hi_score()
+    end
     -- When the game over collection is fully loaded, send the score
     if message_id == hash("proxy_loaded") then
         if sender == msg.url("#gameover_proxy") then

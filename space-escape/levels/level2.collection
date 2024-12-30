@@ -1,5 +1,13 @@
-name: "level2"
+name: "level3"
 scale_along_z: 0
+embedded_instances {
+  id: "hud"
+  data: "components {\n"
+  "  id: \"player_hud\"\n"
+  "  component: \"/hud/player_hud.gui\"\n"
+  "}\n"
+  ""
+}
 embedded_instances {
   id: "scrolling_environment"
   children: "environment"
@@ -15,6 +23,22 @@ embedded_instances {
   "  component: \"/levels/environment/scroll.script\"\n"
   "}\n"
   ""
+  scale3 {
+    x: 1.1
+  }
+}
+embedded_instances {
+  id: "environment1"
+  children: "background1"
+  children: "foreground1"
+  data: "components {\n"
+  "  id: \"scroll\"\n"
+  "  component: \"/levels/environment/scroll.script\"\n"
+  "}\n"
+  ""
+  position {
+    x: 2953.72
+  }
   scale3 {
     x: 1.1
   }
@@ -95,36 +119,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "player"
-  data: "components {\n"
-  "  id: \"spawn_player\"\n"
-  "  component: \"/levels/spawners/spawn_player.script\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"playerFactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/player/player.collection\\\"\\n"
-  "\"\n"
-  "}\n"
-  ""
-}
-embedded_instances {
-  id: "environment1"
-  children: "background1"
-  children: "foreground1"
-  data: "components {\n"
-  "  id: \"scroll\"\n"
-  "  component: \"/levels/environment/scroll.script\"\n"
-  "}\n"
-  ""
-  position {
-    x: 2953.72
-  }
-  scale3 {
-    x: 1.1
-  }
-}
-embedded_instances {
   id: "background1"
   children: "backgroundmap1"
   children: "mountains1"
@@ -198,4 +192,133 @@ embedded_instances {
     x: 1.67825
     y: 1.5
   }
+}
+embedded_instances {
+  id: "player"
+  data: "components {\n"
+  "  id: \"spawn_player\"\n"
+  "  component: \"/levels/spawners/spawn_player.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"playerFactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/player/player.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "audio"
+  data: "components {\n"
+  "  id: \"play\"\n"
+  "  component: \"/audio/play.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/audio/level3.wav\\\"\\n"
+  "looping: 1\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "spawner"
+  children: "bullet_spawner"
+  children: "coin_spawner"
+  children: "item_spawner"
+  children: "mob_spawner"
+  data: ""
+}
+embedded_instances {
+  id: "mob_spawner"
+  data: "components {\n"
+  "  id: \"mob_spawner\"\n"
+  "  component: \"/levels/spawners/mob_spawner.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"alienfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/alien.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"frogfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/frog.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"monkfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/monk.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"skullfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/skull.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"spikefactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/spikes.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"warriorfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/npcs/warrior.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "item_spawner"
+  data: "components {\n"
+  "  id: \"item_spawner\"\n"
+  "  component: \"/levels/spawners/item_spawner.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"ammofactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/pickups/ammo.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"healthfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/pickups/health.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "coin_spawner"
+  data: "components {\n"
+  "  id: \"coin_spawner\"\n"
+  "  component: \"/levels/spawners/coin_spawner.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"coinfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/pickups/coin.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "bullet_spawner"
+  data: "components {\n"
+  "  id: \"bullet_spawner\"\n"
+  "  component: \"/levels/spawners/bullet_spawner.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"bulletfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/player/bullet.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
 }

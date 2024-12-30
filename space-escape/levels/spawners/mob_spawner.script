@@ -1,0 +1,91 @@
+local SPAWN_INTERVAL = 3.5 -- Seconds between enemy spawns
+
+local DEFAULT_SPAWN_POSITION = vmath.vector3(600, 120, 0) -- Default spawn position
+local SKULL_SPAWN_Y = 220 -- Y position for skulls
+local SPIKE_SPAWN_Y = 100 -- Y position for spikes
+
+local spawn_history = {} -- A table to track the last 3 enemies spawned
+
+function init(self)
+	self.spawn_timer = 0
+	math.randomseed(os.time()) -- Seed the random number generator
+end
+
+function check_recent_spawn(mob_type)
+	-- Check if the mob type has been spawned 2 times already in the last 3 spawns
+	local count = 0
+	for _, recent_type in ipairs(spawn_history) do
+		if recent_type == mob_type then
+			count = count + 1
+		end
+	end
+	return count >= 2
+end
+
+function get_random_mob_type()
+	-- Generate a random mob type, ensuring no enemy is repeated 3 times in a row
+	local mob_type
+
+	repeat
+		mob_type = math.random(1, 6) -- 1 = Frog, 2 = Skull, 3 = Alien, 4 = Warrior, 5 = Monk, 6 = Spike
+	until not check_recent_spawn(mob_type)
+
+	return mob_type
+end
+
+function spawn_mob()
+	-- Get a random enemy type
+	local mob_type = get_random_mob_type()
+
+	-- Determine spawn position
+	local spawn_position = vmath.vector3(DEFAULT_SPAWN_POSITION)
+
+	-- Declare the enemy_id outside the if block
+	local mob_id
+
+	-- Spawn the primary enemy
+	if mob_type == 1 then
+		-- Spawn frog
+		mob_id = collectionfactory.create("#frogfactory", spawn_position, nil, {}, 1)
+	elseif mob_type == 2 then
+		-- Spawn skull
+		spawn_position.y = SKULL_SPAWN_Y
+		mob_id = collectionfactory.create("#skullfactory", spawn_position, nil, {}, 1)
+	elseif mob_type == 3 then
+		-- Spawn alien
+		enemy_id = collectionfactory.create("#alienfactory", spawn_position, nil, {}, 1)
+	elseif mob_type == 4 then
+		-- Spawn warrior
+		mob_id = collectionfactory.create("#warriorfactory", spawn_position, nil, {}, 1)
+	elseif mob_type == 5 then
+		-- Spawn monk
+		mob_id = collectionfactory.create("#monkfactory", spawn_position, nil, {}, 1)
+	else
+		-- Spawn spike (new spike factory) at y = 100 and z = 1.0 (in front of the foreground)
+		spawn_position.y = SPIKE_SPAWN_Y
+		mob_id = collectionfactory.create("#spikefactory", spawn_position, nil, {}, 1)
+	end
+
+	-- Check if mob_id is valid
+	if mob_id == nil then
+		return
+	end
+
+	-- Update the spawn history
+	table.insert(spawn_history, mob_type)
+
+	-- Keep only the last 3 spawn history records
+	if #spawn_history > 3 then
+		table.remove(spawn_history, 1)
+	end
+end
+
+function update(self, dt)
+	self.spawn_timer = self.spawn_timer + dt
+	
+	if self.spawn_timer >= SPAWN_INTERVAL then
+		self.spawn_timer = 0
+		spawn_mob()
+	end
+
+end

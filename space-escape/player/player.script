@@ -132,7 +132,7 @@ function on_input(self, action_id, action)
 			is_jumping = false
 			is_falling = false
 			is_shooting = true
-			msg.post("/spawner#endless_spawner", "spawn_bullet")
+			msg.post("/bullet_spawner#bullet_spawner", "spawn_bullet")
 			player_ammo = player_ammo - 1  -- Reduce ammo by 1 when shooting
 			msg.post("/hud#player_hud", "update_ammo", { ammo = player_ammo })
 		end

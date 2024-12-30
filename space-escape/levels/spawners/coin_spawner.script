@@ -1,0 +1,33 @@
+local COIN_SPAWN_INTERVAL = 3 -- Seconds between coin spawns
+local DEFAULT_COIN_SPAWN_POSITION = vmath.vector3(600, 145, 0) -- Item spawn position
+local coin_spawn_timer = 0 -- Timer for coin spawns
+
+function init(self)
+	coin_spawn_timer = 0
+	math.randomseed(os.time()) -- Seed the random number generator
+end
+
+-- New function to spawn coins separately
+function spawn_coin()
+	-- Define Y values for coin spawn
+	local coin_y_values = {145, 220, 200}
+
+	-- Randomly assign a Y value from the list
+	local coin_y = coin_y_values[math.random(1, #coin_y_values)]
+
+	-- Update spawn position with randomly selected Y value
+	local spawn_position = vmath.vector3(DEFAULT_COIN_SPAWN_POSITION.x, coin_y, 0)
+
+	-- Spawn the coin
+	collectionfactory.create("#coinfactory", spawn_position, nil, {}, 1)
+end
+
+function update(self, dt)
+
+	coin_spawn_timer = coin_spawn_timer + dt -- Update the coin spawn timer
+	-- Spawn coin every 5 seconds
+	if coin_spawn_timer >= COIN_SPAWN_INTERVAL then
+		coin_spawn_timer = 0
+		spawn_coin()
+	end
+end

@@ -1,0 +1,11 @@
+function spawn_bullet()
+	-- Spawn the bullet
+	local spawn_position = vmath.vector3(190, 185, 0)
+	collectionfactory.create("#bulletfactory", spawn_position, nil, {}, 1)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("spawn_bullet") then
+		spawn_bullet()  -- Call the function to spawn the bullet
+	end
+end

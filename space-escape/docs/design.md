@@ -1,13 +1,13 @@
 
-#### * Game Design Doc
+#### Game Design Doc
 
 # Space Escape  
 **Liam Flynn, 20098690**  
 **Mobile Games Development CA2**
 
-A PvP endless runner game, 
-
 ## Game Overview
+![image](https://github.com/user-attachments/assets/2550c840-f73d-4b3b-a34d-82e009af45b4)
+
 In 'Space Escape', you take on the role of a famed bounty hunter stranded on a hostile alien planet. 
 Your goal is to survive the relentless onslaught of enemies and obstacles while racing toward your ship to escape.
 

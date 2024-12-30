@@ -17,25 +17,72 @@ collections; enabling/disabling GUIs and message control between game levels).
 -- Initialization 
 -- ------------------------------------------------------------------------------------------
 local player_score = 0  -- Define the player score in the main script
+local high_score = 0
 function init(self)	
+    -- Load the high score at the start of the game
+    load_high_score()
+    
     -- Set the main menu as the starting Game Level for this application
     msg.post(".", "start_main_menu")
+    
     -- Set a Script Property with the initial GameState Status
     self.state = "MAIN_MENU"			
 end
 
----- Score Handling-- Function to update the score
+-- ------------------------------------------------------------------------------------------
+-- High Score Handling
+-- ------------------------------------------------------------------------------------------
+
+-- Function to load the high score from file
+function load_high_score()
+    local file = io.open("high_score.txt", "r")  -- Try to open the file in read mode
+    if file then
+        local score = tonumber(file:read("*all"))  -- Read the score and convert it to a number
+        if score then
+            high_score = score
+        else
+            -- If the score is invalid (e.g., non-numeric), set it to 0
+            high_score = 0
+        end
+        file:close()  -- Close the file
+    else
+        -- If the file doesn't exist, create it
+        high_score = 0
+        save_high_score()  -- Save the initial high score (0)
+    end
+    print("Loaded High Score: " .. high_score)
+end
+
+-- Function to save the high score to file
+function save_high_score()
+    local file = io.open("high_score.txt", "w")  -- Open the file in write mode
+    if file then
+        file:write(tostring(high_score))  -- Write the high score to the file
+        file:close()  -- Close the file
+        print("Saved High Score: " .. high_score)
+    else
+        print("Error: Unable to save high score to file!")
+    end
+end
+
+-- ------------------------------------------------------------------------------------------
+-- Score Handling
+-- ------------------------------------------------------------------------------------------
+
+-- Function to update the score
 function update_score(self, score)
     player_score = player_score + score
-    print("Updated Score: " .. player_score)
+
+    -- Check if the player has achieved a new high score
+    if player_score > high_score then
+        high_score = player_score  -- Update the high score
+        save_high_score()  -- Save the new high score to the file
+    end
+
     -- Send the updated score to HUD
     msg.post("level3:/hud#player_hud", "update_score", { score = player_score })
 end
 
--- Function to retrieve the current score
-function get_player_score()
-    return player_score
-end
 
 -- ------------------------------------------------------------------------------------------
 -- Stop Sound Utility Function
@@ -77,6 +124,7 @@ function on_message(self, message_id, message, sender)
         if sender == msg.url("#gameover_proxy") then
             -- Send the display_score message once the game over collection is loaded
             msg.post("gameover:/main#game_over", "display_score", { score = player_score })
+            msg.post("gameover:/main#game_over", "display_hi_score", { hi_score = high_score })
         end
     end
     

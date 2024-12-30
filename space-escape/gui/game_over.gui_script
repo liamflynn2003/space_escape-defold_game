@@ -1,7 +1,7 @@
 
 local anim = require 'main.modules.animateCalls'
 local player_final_score = 0
-
+local high_score = 0
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	local url = msg.url()
@@ -13,10 +13,12 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("display_score") then
 		-- Update the final score with the score from the message
 		player_final_score = message.score
-		print("Game Over! Final Score:", player_final_score)
-
-		-- Update the GUI to show the final score
 		gui.set_text(gui.get_node("score"), tostring(player_final_score))
+	end
+	if message_id == hash("display_hi_score") then
+		high_score = message.hi_score
+		-- Update the GUI to show the final score
+		gui.set_text(gui.get_node("highscore"), tostring(high_score))
 	end
 end
 

@@ -13,13 +13,13 @@ textures {
 }
 nodes {
   position {
-    x: 319.0
-    y: 190.0
+    x: 314.0
+    y: 170.0
   }
   scale {
-    x: 1.7519
-    y: 1.7519
-    z: 0.6496
+    x: 1.928492
+    y: 1.928492
+    z: 0.71508
   }
   type: TYPE_BOX
   texture: "graphicAssets/title-screen-background"
@@ -30,7 +30,7 @@ nodes {
 nodes {
   position {
     x: 318.0
-    y: 282.0
+    y: 307.0
   }
   scale {
     x: 0.863616
@@ -80,7 +80,7 @@ nodes {
 nodes {
   position {
     x: 320.0
-    y: 69.67772
+    y: 46.67772
   }
   scale {
     x: 6.37008
@@ -117,7 +117,7 @@ nodes {
 nodes {
   position {
     x: 318.0
-    y: 282.0
+    y: 307.0
   }
   scale {
     x: 0.846344
@@ -147,7 +147,7 @@ nodes {
 nodes {
   position {
     x: 474.0
-    y: 184.0
+    y: 220.0
   }
   scale {
     x: 0.528533
@@ -177,8 +177,8 @@ nodes {
 }
 nodes {
   position {
-    x: 221.0
-    y: 184.0
+    x: 256.0
+    y: 219.0
   }
   scale {
     x: 0.604531
@@ -195,9 +195,71 @@ nodes {
     z: 0.902
   }
   type: TYPE_TEXT
-  text: "HI-SCORE:"
+  text: "SCORE:"
   font: "title"
   id: "scoreText"
+  outline {
+    x: 0.2
+    y: 0.302
+    z: 0.702
+  }
+  layer: "menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 474.0
+    y: 136.0
+  }
+  scale {
+    x: 0.528533
+    y: 0.528533
+    z: 0.528533
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.502
+    z: 0.902
+  }
+  type: TYPE_TEXT
+  text: "0000"
+  font: "title"
+  id: "highscore"
+  outline {
+    x: 0.2
+    y: 0.302
+    z: 0.702
+  }
+  layer: "menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 187.0
+    y: 138.0
+  }
+  scale {
+    x: 0.519897
+    y: 0.519897
+    z: 0.519897
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.502
+    z: 0.902
+  }
+  type: TYPE_TEXT
+  text: "HIGH-SCORE:"
+  font: "title"
+  id: "scoreText1"
   outline {
     x: 0.2
     y: 0.302

@@ -5,10 +5,26 @@ local SKULL_SPAWN_Y = 220 -- Y position for skulls
 local SPIKE_SPAWN_Y = 100 -- Y position for spikes
 
 local spawn_history = {} -- A table to track the last 3 enemies spawned
+local difficulty = 1 -- Default difficulty
 
 function init(self)
 	self.spawn_timer = 0
 	math.randomseed(os.time()) -- Seed the random number generator
+
+	-- Adjust difficulty based on the current object URL
+	local current_obj_url = current_url(self)
+	-- Check the current object URL and set the difficulty
+	if current_obj_url == hash("/mob_spawner_level2") then
+		difficulty = 2
+	elseif current_obj_url == hash("/mob_spawner_level3") then
+		difficulty = 3
+	end
+end
+
+function current_url(self)
+	-- Get the ID of the current object (the object this script is attached to)
+	local current_id = go.get_id()
+	return current_id  -- Return the hash of the object ID
 end
 
 function check_recent_spawn(mob_type)
@@ -27,7 +43,16 @@ function get_random_mob_type()
 	local mob_type
 
 	repeat
-		mob_type = math.random(1, 6) -- 1 = Frog, 2 = Skull, 3 = Alien, 4 = Warrior, 5 = Monk, 6 = Spike
+		local rand = math.random(1, 10)
+		if rand <= 8 then
+			-- 80% chance to pick any mob other than Warrior (mob_type 1, 2, 3, 5, 6)
+			mob_type = math.random(1, 6)
+			if mob_type == 4 then
+				mob_type = math.random(1, 3) -- Pick from Frog, Skull, Alien
+			end
+		else
+			mob_type = 4
+		end
 	until not check_recent_spawn(mob_type)
 
 	return mob_type
@@ -36,6 +61,20 @@ end
 function spawn_mob()
 	-- Get a random enemy type
 	local mob_type = get_random_mob_type()
+	local enemy_speed = 100
+
+	-- Adjust speed based on difficulty
+	if difficulty == 2 then
+		enemy_speed = 100
+	elseif difficulty == 3 then
+		-- 50% chance to set speed to 70 (very slow) or 150 (very fast)
+		if math.random(1, 2) == 1 then
+			enemy_speed = 70 -- Very slow
+		else
+			enemy_speed = 150 -- Very fast
+		end
+		SPAWN_INTERVAL = 2.5
+	end
 
 	-- Determine spawn position
 	local spawn_position = vmath.vector3(DEFAULT_SPAWN_POSITION)
@@ -43,7 +82,7 @@ function spawn_mob()
 	-- Declare the enemy_id outside the if block
 	local mob_id
 
-	-- Spawn the primary enemy
+	-- Spawn the primary enemy based on mob type
 	if mob_type == 1 then
 		-- Spawn frog
 		mob_id = collectionfactory.create("#frogfactory", spawn_position, nil, {}, 1)
@@ -53,7 +92,7 @@ function spawn_mob()
 		mob_id = collectionfactory.create("#skullfactory", spawn_position, nil, {}, 1)
 	elseif mob_type == 3 then
 		-- Spawn alien
-		enemy_id = collectionfactory.create("#alienfactory", spawn_position, nil, {}, 1)
+		mob_id = collectionfactory.create("#alienfactory", spawn_position, nil, {}, 1)
 	elseif mob_type == 4 then
 		-- Spawn warrior
 		mob_id = collectionfactory.create("#warriorfactory", spawn_position, nil, {}, 1)
@@ -61,14 +100,18 @@ function spawn_mob()
 		-- Spawn monk
 		mob_id = collectionfactory.create("#monkfactory", spawn_position, nil, {}, 1)
 	else
-		-- Spawn spike (new spike factory) at y = 100 and z = 1.0 (in front of the foreground)
+		-- Spawn spike (new spike factory) at y = 100
 		spawn_position.y = SPIKE_SPAWN_Y
 		mob_id = collectionfactory.create("#spikefactory", spawn_position, nil, {}, 1)
 	end
 
-	-- Check if mob_id is valid
-	if mob_id == nil then
-		return
+	-- Use the mob's URL to set the speed
+	local mob_name_map = { "frog", "skull", "alien", "warrior", "monk", "spike" }
+	local mob_name = mob_name_map[mob_type]
+	local mob_url = mob_id[hash("/" .. mob_name)]
+
+	if mob_url then
+		msg.post(mob_url, "set_speed", { speed = enemy_speed })  -- Set the speed directly for the spawned mob
 	end
 
 	-- Update the spawn history
@@ -82,10 +125,10 @@ end
 
 function update(self, dt)
 	self.spawn_timer = self.spawn_timer + dt
-	
+
+	-- If the spawn timer exceeds the spawn interval, spawn a new mob
 	if self.spawn_timer >= SPAWN_INTERVAL then
 		self.spawn_timer = 0
 		spawn_mob()
 	end
-
 end

@@ -216,22 +216,22 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"sound\"\n"
   "  type: \"sound\"\n"
-  "  data: \"sound: \\\"/audio/level3.wav\\\"\\n"
+  "  data: \"sound: \\\"/audio/level2.wav\\\"\\n"
   "looping: 1\\n"
   "\"\n"
   "}\n"
   ""
 }
 embedded_instances {
-  id: "spawner"
+  id: "level2spawners"
   children: "bullet_spawner"
   children: "coin_spawner"
-  children: "item_spawner"
-  children: "mob_spawner"
+  children: "item_spawner_level2"
+  children: "mob_spawner_level2"
   data: ""
 }
 embedded_instances {
-  id: "mob_spawner"
+  id: "mob_spawner_level2"
   data: "components {\n"
   "  id: \"mob_spawner\"\n"
   "  component: \"/levels/spawners/mob_spawner.script\"\n"
@@ -275,7 +275,7 @@ embedded_instances {
   ""
 }
 embedded_instances {
-  id: "item_spawner"
+  id: "item_spawner_level2"
   data: "components {\n"
   "  id: \"item_spawner\"\n"
   "  component: \"/levels/spawners/item_spawner.script\"\n"

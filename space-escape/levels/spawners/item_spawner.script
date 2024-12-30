@@ -1,15 +1,41 @@
-
-local ITEM_SPAWN_INTERVAL = 6 -- Seconds between item spawns
+local ITEM_SPAWN_INTERVAL = 4 -- Default Seconds between item spawns
 local DEFAULT_ITEM_SPAWN_POSITION = vmath.vector3(600, 145, 0) -- Item spawn position
 
 local last_item_spawned = nil -- Last item spawned (1 = Ammo, 2 = Health)
 local item_spawn_count = 0 -- Count of consecutive spawns of the same item
+local difficulty = 1 -- Default difficulty
 
 function init(self)
 	self.item_spawn_timer = 0
 	self.last_item_spawned = nil -- Last item spawned (1 = Ammo, 2 = Health)
 	self.item_spawn_count = 0 -- Count of consecutive spawns of the same item
 	math.randomseed(os.time())
+
+	-- Adjust difficulty based on the current object URL
+	local current_obj_url = current_url(self)
+	print("Current Object URL: " .. tostring(current_obj_url))  -- For debugging
+
+	-- Check the current object URL and set the difficulty
+	if current_obj_url == hash("/item_spawner_level2") then
+		difficulty = 2
+		print("Item difficulty 2")
+	elseif current_obj_url == hash("/item_spawner_level3") then
+		difficulty = 3
+		print("Item difficulty set to 3")
+	end
+
+	-- Adjust ITEM_SPAWN_INTERVAL based on the difficulty level
+	if difficulty == 2 then
+		ITEM_SPAWN_INTERVAL = 5 -- For medium difficulty, spawn every 5 seconds
+	elseif difficulty == 3 then
+		ITEM_SPAWN_INTERVAL = 6 -- For hard difficulty, spawn every 2.5 seconds
+	end
+end
+
+function current_url(self)
+	local current_id = go.get_id()
+	print(current_id)
+	return current_id  -- Return the hash of the object ID
 end
 
 function spawn_item()

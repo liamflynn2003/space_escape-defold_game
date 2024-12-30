@@ -4,6 +4,8 @@ local DEFAULT_ITEM_SPAWN_POSITION = vmath.vector3(600, 145, 0) -- Item spawn pos
 local last_item_spawned = nil -- Last item spawned (1 = Ammo, 2 = Health)
 local item_spawn_count = 0 -- Count of consecutive spawns of the same item
 local difficulty = 1 -- Default difficulty
+local game_time = 0 -- Timer to track total game time
+local ship_spawned = false -- Flag to track if ship has been spawned
 
 function init(self)
 	self.item_spawn_timer = 0
@@ -18,7 +20,7 @@ function init(self)
 	-- Check the current object URL and set the difficulty
 	if current_obj_url == hash("/item_spawner_level2") then
 		difficulty = 2
-		print("Item difficulty 2")
+		print("Item difficulty set to 2")
 	elseif current_obj_url == hash("/item_spawner_level3") then
 		difficulty = 3
 		print("Item difficulty set to 3")
@@ -28,7 +30,7 @@ function init(self)
 	if difficulty == 2 then
 		ITEM_SPAWN_INTERVAL = 5 -- For medium difficulty, spawn every 5 seconds
 	elseif difficulty == 3 then
-		ITEM_SPAWN_INTERVAL = 6 -- For hard difficulty, spawn every 2.5 seconds
+		ITEM_SPAWN_INTERVAL = 6 -- For hard difficulty, spawn every 6 seconds
 	end
 end
 
@@ -68,10 +70,29 @@ function spawn_item()
 	item_spawn_count = item_spawn_count + 1
 end
 
+function spawn_ship()
+	-- Spawn a ship after the specified time
+	collectionfactory.create("#shipfactory", vmath.vector3(540, 213.5, 0), nil, {}, 1)
+	print("Ship spawned!")
+end
+
 function update(self, dt)
+	-- Track total game time
+	game_time = game_time + dt
+
+	-- Spawn item based on the spawn interval
 	self.item_spawn_timer = self.item_spawn_timer + dt
 	if self.item_spawn_timer >= ITEM_SPAWN_INTERVAL then
 		self.item_spawn_timer = 0
 		spawn_item()
+	end
+
+	-- Spawn a ship at the right times based on difficulty
+	if difficulty == 1 and not ship_spawned and game_time >= 3 then
+		spawn_ship()
+		ship_spawned = true
+	elseif difficulty == 2 and not ship_spawned and game_time >= 120 then
+		spawn_ship()
+		ship_spawned = true
 	end
 end

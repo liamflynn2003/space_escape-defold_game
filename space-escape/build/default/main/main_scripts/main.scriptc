@@ -1,6 +1,6 @@
 
-‹J
-èI--[[ 
+ûP
+ØP--[[ 
 =============================================================================================
 
 Lua Script File:  	main.script
@@ -106,6 +106,8 @@ local function stop_current_level_sound(state)
         msg.post("main:/audio#sound", "stop_sound")
     elseif state == "MAIN_MENU" then
         msg.post("main:/audio#sound", "stop_sound")
+    elseif state == "LEVELCOMPLETE_RUNNING" then
+        msg.post("main:/audio#sound", "stop_sound")
     elseif state == "GAMEOVER_RUNNING" then
         msg.post("main:/audio#sound", "stop_sound")
     end
@@ -154,7 +156,11 @@ function on_message(self, message_id, message, sender)
             if self.state == "LEVEL2_RUNNING" then
                 msg.post("#level2_proxy", "unload")
             end
-
+            
+            if self.state == "LEVELCOMPLETE_RUNNING" then
+                msg.post("#levelcomplete_proxy", "unload")
+            end
+            
             if self.state == "LEVEL3_RUNNING" then
                 -- Add a delay of 2 seconds before unloading level 3
                 timer.delay(2, false, function()
@@ -162,7 +168,6 @@ function on_message(self, message_id, message, sender)
                     msg.post("#level3_proxy", "unload")
                 end)
             end
-
             if self.state == "GAMEOVER_RUNNING" then
                 msg.post("#gameover_proxy", "unload")
             end
@@ -207,6 +212,19 @@ function on_message(self, message_id, message, sender)
         msg.post("#level3_proxy", "load")
         msg.post("#main_menu", "disable")
         self.state = "LEVEL3_RUNNING"
+        
+    elseif message_id == hash("start_levelcomplete") then
+        stop_current_level_sound(self.state)
+        if self.state == "LEVEL1_RUNNING" then
+            msg.post("#level1_proxy", "unload")
+        end
+        if self.state == "LEVEL2_RUNNING" then
+            msg.post("#level2_proxy", "unload")
+        end
+
+        msg.post("#levelcomplete_proxy", "load")
+        msg.post("#main_menu", "disable")
+        self.state = "LEVELCOMPLETE_RUNNING"
 
         -- When starting the game over screen
     elseif message_id == hash("start_gameover") then
@@ -253,6 +271,11 @@ function on_message(self, message_id, message, sender)
         if sender == msg.url("#level3_proxy") then
             msg.post(sender, "enable")
             self.state = "LEVEL3_RUNNING"
+        end
+
+        if sender == msg.url("#levelcomplete_proxy") then
+            msg.post(sender, "enable")
+            self.state = "LEVELCOMPLETE_RUNNING"
         end
 
         if sender == msg.url("#gameover_proxy") then

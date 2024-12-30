@@ -1,0 +1,29 @@
+local DESTROY_X = -200 -- X position at which the enemy is destroyed
+local MOVE_SPEED = 100 -- The speed of the movement to the left
+
+function init(self)
+	self.speed = MOVE_SPEED -- Set default speed for movement
+end
+
+function update(self, dt)
+	-- Move the object to the left
+	local pos = go.get_position()
+	pos.x = pos.x - self.speed * dt
+
+	-- Check if the object has moved past the DESTROY_X position
+	if pos.x <= DESTROY_X then
+		go.delete()  -- Destroy the object when it reaches DESTROY_X
+	end
+
+	go.set_position(pos)
+end
+
+function on_message(self, message_id, message, sender)
+	-- Handle collision with player
+	if message_id == hash("contact_point_response") then
+		-- Collision with player
+		if message.other_group == hash("player") then
+			msg.post("main:/main#main", "start_levelcomplete")
+		end
+	end
+end

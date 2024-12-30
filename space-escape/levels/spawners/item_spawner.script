@@ -8,6 +8,7 @@ local game_time = 0 -- Timer to track total game time
 local ship_spawned = false -- Flag to track if ship has been spawned
 
 function init(self)
+	game_time = 0
 	self.item_spawn_timer = 0
 	self.last_item_spawned = nil -- Last item spawned (1 = Ammo, 2 = Health)
 	self.item_spawn_count = 0 -- Count of consecutive spawns of the same item
@@ -15,7 +16,6 @@ function init(self)
 
 	-- Adjust difficulty based on the current object URL
 	local current_obj_url = current_url(self)
-	print("Current Object URL: " .. tostring(current_obj_url))  -- For debugging
 
 	-- Check the current object URL and set the difficulty
 	if current_obj_url == hash("/item_spawner_level2") then
@@ -30,7 +30,7 @@ function init(self)
 	if difficulty == 2 then
 		ITEM_SPAWN_INTERVAL = 5 -- For medium difficulty, spawn every 5 seconds
 	elseif difficulty == 3 then
-		ITEM_SPAWN_INTERVAL = 6 -- For hard difficulty, spawn every 6 seconds
+		ITEM_SPAWN_INTERVAL = 7 -- For hard difficulty, spawn every 7 seconds
 	end
 end
 
@@ -50,9 +50,9 @@ function spawn_item()
 		until item_type ~= last_item_spawned
 		item_spawn_count = 0
 	else
-		-- Randomly pick an item type, ensuring no repeats
+		-- Randomly pick an item type
 		repeat
-			item_type = math.random(1, 2) -- Include Coin in random selection
+			item_type = math.random(1, 2)
 		until item_type ~= last_item_spawned
 	end
 
@@ -88,7 +88,7 @@ function update(self, dt)
 	end
 
 	-- Spawn a ship at the right times based on difficulty
-	if difficulty == 1 and not ship_spawned and game_time >= 3 then
+	if difficulty == 1 and not ship_spawned and game_time >= 60 then
 		spawn_ship()
 		ship_spawned = true
 	elseif difficulty == 2 and not ship_spawned and game_time >= 120 then

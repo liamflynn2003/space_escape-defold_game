@@ -1,6 +1,6 @@
 
-ûP
-ØP--[[ 
+³Q
+Q--[[ 
 =============================================================================================
 
 Lua Script File:  	main.script
@@ -52,7 +52,6 @@ function load_high_score()
         high_score = 0
         save_high_score()  -- Save the initial high score (0)
     end
-    print("Loaded High Score: " .. high_score)
 end
 
 -- Function to save the high score to file
@@ -61,7 +60,6 @@ function save_high_score()
     if file then
         file:write(tostring(high_score))  -- Write the high score to the file
         file:close()  -- Close the file
-        print("Saved High Score: " .. high_score)
     else
         print("Error: Unable to save high score to file!")
     end
@@ -83,16 +81,18 @@ end
 function update_score(self, score)
     player_score = player_score + score
 
-    -- Check if the player has achieved a new high score
-    if player_score > high_score then
-        high_score = player_score  -- Update the high score
-        save_high_score()  -- Save the new high score to the file
+    -- Check if the current scene is LEVEL3_RUNNING before updating the high score
+    if self.state == "LEVEL3_RUNNING" then
+        -- Check if the player has achieved a new high score
+        if player_score > high_score then
+            high_score = player_score  -- Update the high score
+            save_high_score()  -- Save the new high score to the file
+        end
     end
 
     -- Send the updated score to HUD
     msg.post("level3:/hud#player_hud", "update_score", { score = player_score })
 end
-
 
 -- ------------------------------------------------------------------------------------------
 -- Stop Sound Utility Function

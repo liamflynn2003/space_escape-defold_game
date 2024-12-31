@@ -1,6 +1,6 @@
 
-≥Q
-êQ--[[ 
+âQ
+ÊP--[[ 
 =============================================================================================
 
 Lua Script File:  	main.script
@@ -229,7 +229,6 @@ function on_message(self, message_id, message, sender)
         -- When starting the game over screen
     elseif message_id == hash("start_gameover") then
         stop_current_level_sound(self.state)
-        print("Opening game over screen")
 
         -- Unload the active level and menu
         if self.state == "LEVEL1_RUNNING" then

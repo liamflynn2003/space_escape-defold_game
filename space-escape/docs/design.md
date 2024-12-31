@@ -64,6 +64,12 @@ With its structured progression and replayable endless mode, *Space Escape* is a
 
 ## Game Mechanics
 
+### Input
+![image](https://github.com/user-attachments/assets/3b9c3b95-fb87-46e5-9f87-f8bbff40a733)
+
+Players can simply tap the jump button to jump, or the shoot button to shoot.
+On PC, spacebar is jump, and left click is to shoot.
+
 ### Health
 ![image](https://github.com/user-attachments/assets/ba246277-791e-4d18-aafe-60804f7a5c98)
 
@@ -144,6 +150,20 @@ Friendly NPCs reduce the player's score by 200 when shot.
 
 Fellow explorers of the planet who walk along the ground, mixed in with enemies. Players must be careful with their shots so as not to reduce their score by shooting them.
 
+### Collision
+
+Collision between the player and enemies and items is handled via messaging, as is score updates and bullet impacts on enemies.
+
+### Score
+![image](https://github.com/user-attachments/assets/bb744264-9986-4c0d-bb7c-e5779895450f)
+
+Score is saved to a file once a new high score is achieved on the endless mode, level 3. this score is displayed on the game over screen of the endless mode, and can be reset via a button on the main menu.
+
+### Audio
+![image](https://github.com/user-attachments/assets/b96a0922-dbc7-459b-a126-6d4528f7ae50)
+
+Each screen plays it's own unique music - title screen, game over, level complete, and each individual level.
+
 ## Game World
 ![image](https://github.com/user-attachments/assets/e36f0932-9abd-4bcd-ac1c-b2b0bfe62668)
 
@@ -158,6 +178,23 @@ You play as an experienced bounty hunter. As they were landing on Skibi-Z for a 
 
 ## Mobile Game Design
 
+### **Why an Endless Runner Suits Mobile Gaming**
+- **Touchscreen-Friendly**:  
+  The simple tapping controls for jumping and shooting make it easy to play on any mobile device.
+
+- **Quick Gameplay**:  
+  Endless runners are perfect for short play sessions, ideal for mobile users on the go.
+
+- **Highly Replayable**:  
+  Players can keep trying to beat their high score.
+
+- **Lightweight and Accessible**:  
+  Endless runners don’t require complex controls or hardware, making them playable on a wide range of devices.
+
+### **Successful Examples**
+- **Temple Run**:  
+- **Jetpack Joyride**:  
+- **Subway Surfers**
 
 ## Monetisation
 

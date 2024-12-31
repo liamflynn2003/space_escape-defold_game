@@ -151,9 +151,9 @@ If you fail to point out where you should get marks, it may affect your grade.
 | **Starter** | GDD Complete      | Splash Screen with main menu | GUI used for menus, player health/ammo, animated main menu | Level 1 - Player reaches end after 60 seconds | Many, many collision groups & objects |
 | **Basic**   | Each Outlined Heading Filled | Main Menu buttons animate on pop in and function | Collections, GOs, CollectionFactories, GUI HUD score | Level 2 - Player reaches end after 120 seconds | A lot of groups and masking; Player, ground |
 | **Good**    | In depth detail for enemies & mechanics | Game High Scores, Saves, Loads and Reset Button | Many sprite animations, Tilemaps, Tilesource | Level 3 - endless Runner w/ Hi-Score tracking | Enemy, bullet, health, ammo, ship, spikes, ally |
-| **Excellent** | 1700+ words, each heading with large detail | Levels increase in difficulty, music for each screen, enemy attributes change w/ difficulty | Messaging for score and collisions, music for each menu and level, item pickups + enemy kills | Endless Level - BG loops while player runs in place, objs spawn and move left | Bullet kills enemy, Ammo inc. ammo, Health inc. health, Updates HUD, Score updates via Collisions |
+| **Excellent** | 1700+ words, each heading with large detail | Levels increase in difficulty, music for each screen, enemy attributes change w/ difficulty | Messaging for score and collisions, music for each menu and level, item pickups + enemy kills | Endless Level - BG loops while player runs in place, objs spawn and move left | Bullet kills enemy, Ammo inc. ammo*, Health inc. health*, Updates HUD, Score updates via Collisions |
 
-
+* inc. = Increases
 ### Additional Comments and Highlights
 
 Here you should highlight where you feel you should get marks, and any other comments you feel are relevant

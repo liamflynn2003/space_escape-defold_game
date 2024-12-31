@@ -146,25 +146,14 @@ Each entry should be kept succinct.  Point to documentation where required. A ta
 
 If you fail to point out where you should get marks, it may affect your grade.
 
-| Grade     | Game Design Doc | Game Config/Setup | Defold Components | Game Progression | Physics                    |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
-| Starter   |  GDD Complete   |  Splash Screen    |GUI used for menus,| Level 1- Player  | Many, many collision       |
-|           |                 |  with main menu   |player health/ammo,| Reaches end after|  groups &  objects         |
-|           |                 |                   |animated main menu | 60 seconds       |                            |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
-| Basic     | Each Outlined   | Main Menu buttons |Collections, GOs   | Level 2 - Player | A lot of groups            |
-|           | Heading Filled  | animate on pop in |CollectionFactories| Reaches end after| and masking;               |
-|           |                 | and function      |GUI HUD score      | 120 seconds      | Player, ground,            |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
-| Good      |In depth detail  | Game High Scores  |Many sprite anims  | Level 3 -        | Enemy, bullet,             |
-|           | for enemies &   | Saves, Loads and  |Tilemaps           | endless Runner w/| health, ammo,              |
-|           | mechanics       |   Reset Button    |Tilesource         | Hi-Score tracking| ship,spikes,ally           |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
-| Excellent | 1700+ words,    | Levels Increase in|Messaging for score| Endless Level -  |Bullet kills enemy          |
-|           | each heading    |difficulty, music  |and collisions,    |BG loops while    |Ammo inc. ammo              |
-|           |with large detail|for each screen    |music for each menu|player runs in    |Health inc. health          |
-|           |                 |enemy attributes   |and level, item    |place, objs spawn |+ Updates HUD               |
-|           |                 |change w/ diff.    |pickups+enemy kills|and move left     |Score Updates via Collisions|
+| Grade      | Game Design Doc   | Game Config/Setup  | Defold Components   | Game Progression          | Physics                         |
+| ---------- | ----------------- | ------------------ | ------------------- | ------------------------- | ------------------------------- |
+| **Starter** | GDD Complete      | Splash Screen with main menu | GUI used for menus, player health/ammo, animated main menu | Level 1 - Player reaches end after 60 seconds | Many, many collision groups & objects |
+| **Basic**   | Each Outlined Heading Filled | Main Menu buttons animate on pop in and function | Collections, GOs, CollectionFactories, GUI HUD score | Level 2 - Player reaches end after 120 seconds | A lot of groups and masking; Player, ground |
+| **Good**    | In depth detail for enemies & mechanics | Game High Scores, Saves, Loads and Reset Button | Many sprite animations, Tilemaps, Tilesource | Level 3 - endless Runner w/ Hi-Score tracking | Enemy, bullet, health, ammo, ship, spikes, ally |
+| **Excellent** | 1700+ words, each heading with large detail | Levels increase in difficulty, music for each screen, enemy attributes change w/ difficulty | Messaging for score and collisions, music for each menu and level, item pickups + enemy kills | Endless Level - BG loops while player runs in place, objs spawn and move left | Bullet kills enemy, Ammo inc. ammo, Health inc. health, Updates HUD, Score updates via Collisions |
+
+
 ### Additional Comments and Highlights
 
 Here you should highlight where you feel you should get marks, and any other comments you feel are relevant

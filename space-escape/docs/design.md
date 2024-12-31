@@ -63,8 +63,11 @@ Players can choose to play from three distinct modes: **Level 1**, **Level 2**, 
 With its structured progression and replayable endless mode, *Space Escape* is an engaging experience for hose looking for a high-skill challenge, and for new players learning the game.  
 
 ## Game Mechanics
+
+### Health
 ![image](https://github.com/user-attachments/assets/ba246277-791e-4d18-aafe-60804f7a5c98)
 
+### Ammo
 ![image](https://github.com/user-attachments/assets/946ab7c5-9b97-48d9-aef5-91f3544d6772)
 
 ![image](https://github.com/user-attachments/assets/2dd59565-41b9-4273-908d-7a3e42ef9271)

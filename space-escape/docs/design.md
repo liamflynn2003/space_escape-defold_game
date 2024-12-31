@@ -18,6 +18,8 @@ The game features two levels of increasing difficulty which end once you reach y
 *Space Escape* delivers fast-paced 2D auto-scrolling action inspired by popular mobile games like *Jetpack Joyride* and *Temple Run*. The core gameplay revolves around quick reflexes, avoiding enemies and resource management.  
 
 ### Mechanics  
+![image](https://github.com/user-attachments/assets/0a71e99b-ad78-4085-97ad-7ed90745156a)
+
 - **Endless Running:** The player character automatically moves forward, creating a constant sense of momentum. The scrolling background enhances the feeling of speed and progression as the player races to survive.  
 - **Enemy Encounters:** Enemies spawn from the right side of the screen and move toward the player. Players must time jumps to avoid enemies, while attempting to collect coins and items.
 - **Power-Ups and Collectibles:**  

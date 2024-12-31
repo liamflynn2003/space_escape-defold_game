@@ -64,7 +64,8 @@ function spawn_mob()
 
 	-- Adjust speed based on difficulty
 	if difficulty == 2 then
-		enemy_speed = 100
+		enemy_speed = 120
+		SPAWN_INTERVAL = 3
 	elseif difficulty == 3 then
 		-- 50% chance to set speed to 70 (very slow) or 150 (very fast)
 		if math.random(1, 2) == 1 then

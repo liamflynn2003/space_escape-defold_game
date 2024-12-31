@@ -22,7 +22,6 @@ function init(self)
 		difficulty = 2
 	elseif current_obj_url == hash("/item_spawner_level3") then
 		difficulty = 3
-		print("Item difficulty set to 3")
 	end
 
 	-- Adjust ITEM_SPAWN_INTERVAL based on the difficulty level

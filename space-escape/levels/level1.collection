@@ -6,6 +6,10 @@ embedded_instances {
   "  id: \"player_hud\"\n"
   "  component: \"/hud/player_hud.gui\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"touch_controls\"\n"
+  "  component: \"/gui/touch_controls.gui\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

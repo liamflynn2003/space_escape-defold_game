@@ -6,6 +6,10 @@ embedded_instances {
   "  id: \"player_hud\"\n"
   "  component: \"/hud/player_hud.gui\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"touch_controls\"\n"
+  "  component: \"/gui/touch_controls.gui\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
@@ -290,6 +294,12 @@ embedded_instances {
   "  id: \"healthfactory\"\n"
   "  type: \"collectionfactory\"\n"
   "  data: \"prototype: \\\"/pickups/health.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"shipfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/pickups/ship.collection\\\"\\n"
   "\"\n"
   "}\n"
   ""

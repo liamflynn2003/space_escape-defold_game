@@ -39,6 +39,8 @@ The game features two levels of increasing difficulty which end once you reach y
 
 ## Game Progression  
 
+![image](https://github.com/user-attachments/assets/63aef6a8-8ee9-4273-9236-85d7f2cd1382)
+
 Players can choose to play from three distinct modes: **Level 1**, **Level 2**, or the **Endless Mode**, each designed to offer a unique experience and cater to different skill levels.  
 
 ### Level 1  

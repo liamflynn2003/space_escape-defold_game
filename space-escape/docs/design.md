@@ -202,8 +202,31 @@ You play as an experienced bounty hunter. As they were landing on Skibi-Z for a 
 - **Jetpack Joyride**:  
 - **Subway Surfers**
 
+### Possible Improvements to Tarrget the Mobile Market
+- Online leaderboards and a social element could be introduced, allowing players to compare and boast about their achievements, drumming up interest in the game and keeping players engaged, which would result in players wanting to spend more on the possible purchaseables mentioned in the next section.
+  
 ## Monetisation
+Space Escape has potential for monetisation in the future.
+- The game could introduce currency that allows the player to purchase upgrades, such as more health or ammo.
+- Players could be given the option to watch an ad to continue after dying on an endlesss run.
+- Players could purchase items to let them continue on an endless run after dying.
+- Players could purchase customisation options for their player character.
 
+### Distribution
 
-## Distribution
+For **Space Escape**, the game can be distributed through the following platforms:
 
+- **Google Play Store (Android)**
+  - Large audience of Android users.
+  - Monetization via in-app purchases, ads, or premium versions.
+  - Requires submission and review process.
+
+- **Apple App Store (iOS)**
+  - Reaches iPhone and iPad users globally.
+  - Monetization options similar to Google Play.
+  - Requires compliance with Apple's guidelines and review process (More restrictive).
+
+- **itch.io (Indie Platform)**
+  - Popular among indie game enthusiasts.
+  - Flexible monetization (pay-what-you-want or fixed price).
+  - Simple submission process with less strict approval requirements.

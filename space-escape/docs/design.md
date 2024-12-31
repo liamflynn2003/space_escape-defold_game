@@ -100,6 +100,13 @@ Coins spawn at random y values, which can be colected by jumping or running into
 
 Players can jump to avoid enemies and collect coins that spawn in the air.
 
+### Ship
+![image](https://github.com/user-attachments/assets/5db233ed-795a-436d-a4e2-8d60cd21fa5b)
+
+The player's ship serves as the goal for levels 1 and 2. Upon reachging it, the player is transferred to the level complete screen, which they can use to return to the main menu once ready.
+
+![image](https://github.com/user-attachments/assets/2af79434-6828-4505-88aa-f960ede58e22)
+
 ### Enemies
 
 Various enemies will be encountered throughout the levels. Each enemy reduces the player's health by 1 upon contact, and can be killed by 1 bullet shot.
@@ -138,10 +145,16 @@ Friendly NPCs reduce the player's score by 200 when shot.
 Fellow explorers of the planet who walk along the ground, mixed in with enemies. Players must be careful with their shots so as not to reduce their score by shooting them.
 
 ## Game World
+![image](https://github.com/user-attachments/assets/e36f0932-9abd-4bcd-ac1c-b2b0bfe62668)
 
+An unfamiliar alien planet swamped with hostile monsters and aliens. Planet Skibi-Z was meant to be a quick stop for a break, but a storm disruputed the player character's landing and now they must fight and run their way back to their ship, through any obstacles in their path. The planet has mostly rocky terrain with purple skys, and mountains in the background. The various aliens and monsters are natives of the planet, however the warriors are friendly explorers.
 
 ## Characters
 
+#### Player
+![image](https://github.com/user-attachments/assets/00e80b50-5a56-4268-9e93-44e5c7b4eeb2)
+
+You play as an experienced bounty hunter. As they were landing on Skibi-Z for a quick break from their long journey home after a successful mission, a mysterious storm interfered with their ship and they were forced to eject, with their ship crash landing far away. Not easily deterred, they immediately begin running straight towards the crash site, not letting anything get in their way.
 
 ## Mobile Game Design
 

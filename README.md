@@ -146,13 +146,22 @@ Each entry should be kept succinct.  Point to documentation where required. A ta
 
 If you fail to point out where you should get marks, it may affect your grade.
 
-| Grade     | Game Design Doc | Game Config/Setup | Defold Components | Game Progression | Physics |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | ------- |
-| Starter   |                 |                   |                   |                  |         |
-| Basic     |                 |                   |                   |                  |         |
-| Good      |                 |                   |                   |                  |         |
-| Excellent |                 |                   |                   |                  |         |
-
+| Grade     | Game Design Doc | Game Config/Setup | Defold Components | Game Progression | Physics                    |
+| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
+| Starter   |  GDD Complete   |  Splash Screen    |GUI used for menus,| Level 1- Player  | Many, many collision       |
+|           |                 |  with main menu   |player health/ammo,| Reaches end after|  groups &  objects         |
+|           |                 |                   |animated main menu | 60 seconds       |                            |
+| Basic     | Each Outlined   | Main Menu buttons |Collections, GOs   | Level 2 - Player | A lot of groups            |
+|           | Heading Filled  | animate on pop in |CollectionFactories| Reaches end after| and masking;               |
+|           |                 | and function      |GUI HUD score      | 120 seconds      | Player, ground,            |
+| Good      |In depth detail  | Game High Scores  |Many sprite anims  | Level 3 -        | Enemy, bullet,             |
+|           | for enemies &   | Saves, Loads and  |Tilemaps           | endless Runner w/| health, ammo,              |
+|           | mechanics       |   Reset Button    |Tilesource         | Hi-Score tracking| ship,spikes,ally           |
+| Excellent | 1700+ words,    | Levels Increase in|Messaging for score| Endless Level -  |Bullet kills enemy          |
+|           | each heading    |difficulty, music  |and collisions,    |BG loops while    |Ammo inc. ammo              |
+|           |with large detail|for each screen    |music for each menu|player runs in    |Health inc. health          |
+|           |                 |enemy attributes   |and level, item    |place, objs spawn |+ Updates HUD               |
+|           |                 |change w/ diff.    |pickups+enemy kills|and move left     |Score Updates via Collisions|
 ### Additional Comments and Highlights
 
 Here you should highlight where you feel you should get marks, and any other comments you feel are relevant

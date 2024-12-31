@@ -70,10 +70,12 @@ With its structured progression and replayable endless mode, *Space Escape* is a
 ### Ammo
 ![image](https://github.com/user-attachments/assets/946ab7c5-9b97-48d9-aef5-91f3544d6772)
 
-![image](https://github.com/user-attachments/assets/2dd59565-41b9-4273-908d-7a3e42ef9271)
-
+### Shooting
 ![image](https://github.com/user-attachments/assets/d05ab066-42c1-4e83-94e6-62f02cb05958)
 
+![image](https://github.com/user-attachments/assets/2dd59565-41b9-4273-908d-7a3e42ef9271)
+
+### Jumping
 ![image](https://github.com/user-attachments/assets/fcc62f52-4438-4ff5-9618-7df58010ec92)
 
 

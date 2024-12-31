@@ -48,17 +48,23 @@ Players can choose to play from three distinct modes: **Level 1**, **Level 2**, 
 - Features slower enemies, frequent item spawns, and longer intervals between enemy waves.  
 - After **60 seconds**, the player reaches their ship and completes the level.  
 - The completion screen allows players to return to the main menu.  
-
+- Enemies spawn every 3.5 seconds, move at 100 speed.
+- Items spawn every 4 seconds
+  
 ### Level 2  
 - Provides an increased challenge for players seeking a tougher experience.  
 - Features faster enemies, less frequent item spawns, and shorter intervals between enemy waves.  
 - The level ends after **120 seconds** when the player reaches their ship and escapes.  
 - The completion screen allows players to return to the main menu.
-- 
+- Enemies spawn every 3 seconds, move at 120 speed.
+- Items spawn every 5 seconds.
+
 ### Endless Mode  
 - The game continues indefinitely until the player reaches a **game over**.  
 - Tracks the player’s score throughout the run, encouraging replayability and competition.  
 - Allows players to continuously sharpen their skill and aim for higher scores.
+- Enemies spawn every 2.5 seconds, move at either 70 speed or 150 speed, depending on a 1 in 2 chance.
+- Items spawn every 7 seconds.
 
 With its structured progression and replayable endless mode, *Space Escape* is an engaging experience for hose looking for a high-skill challenge, and for new players learning the game.  
 
@@ -125,7 +131,7 @@ Frogs have a smaller hitbox, and spawn often in easier difficulties. Because of 
 #### Monks
 ![image](https://github.com/user-attachments/assets/516fe42f-7394-4ce7-b61f-d4e94be562d1)
 
-Monks have a large hitbox, so players must time their jumps well toa void them.
+Monks have a large hitbox, so players must time their jumps well to avoid them.
 
 #### Aliens
 ![image](https://github.com/user-attachments/assets/bc64badf-023b-4f7f-81aa-6dfc112cac6f)

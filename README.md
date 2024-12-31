@@ -154,8 +154,8 @@ If you fail to point out where you should get marks, it may affect your grade.
 | --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
 | Basic     | Each Outlined   | Main Menu buttons |Collections, GOs   | Level 2 - Player | A lot of groups            |
 |           | Heading Filled  | animate on pop in |CollectionFactories| Reaches end after| and masking;               |
-| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
 |           |                 | and function      |GUI HUD score      | 120 seconds      | Player, ground,            |
+| --------- | --------------- | ----------------- | ----------------- | ---------------- | -------------------------- |
 | Good      |In depth detail  | Game High Scores  |Many sprite anims  | Level 3 -        | Enemy, bullet,             |
 |           | for enemies &   | Saves, Loads and  |Tilemaps           | endless Runner w/| health, ammo,              |
 |           | mechanics       |   Reset Button    |Tilesource         | Hi-Score tracking| ship,spikes,ally           |

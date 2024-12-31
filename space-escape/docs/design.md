@@ -68,6 +68,7 @@ With its structured progression and replayable endless mode, *Space Escape* is a
 ![image](https://github.com/user-attachments/assets/ba246277-791e-4d18-aafe-60804f7a5c98)
 
 The player has 4 health, represented by 4 icons in the top left of the screen. 
+
 ![computer-console](https://github.com/user-attachments/assets/5221fd41-bae8-425c-841a-237aaa35f9ce)
 
 Player's can collect health pickups during the level to recover lost health, but it cannot exceed 5.

@@ -84,11 +84,58 @@ Player's can have a maximum ammo of 5. With ammo, a player can shoot their gun. 
 ### Shooting
 ![image](https://github.com/user-attachments/assets/d05ab066-42c1-4e83-94e6-62f02cb05958)
 
+ Player shooting the gun. this results in a bullet firing across the screen to the right.
+ 
 ![image](https://github.com/user-attachments/assets/2dd59565-41b9-4273-908d-7a3e42ef9271)
+
+Bullets travel to the right of the screen. Upon hitting an enemy, the enemy is destroyed, the player's score increases by 50, and the enemy and bullet are destroyed.
+
+### Coins
+![image](https://github.com/user-attachments/assets/072e5877-0ae8-45ce-8094-d2b27ba1eb18)
+
+Coins spawn at random y values, which can be colected by jumping or running into them. Collecting a coin increases a player's score by 100.
 
 ### Jumping
 ![image](https://github.com/user-attachments/assets/fcc62f52-4438-4ff5-9618-7df58010ec92)
 
+Players can jump to avoid enemies and collect coins that spawn in the air.
+
+### Enemies
+
+Various enemies will be encountered throughout the levels. Each enemy reduces the player's health by 1 upon contact, and can be killed by 1 bullet shot.
+
+#### Frogs
+![image](https://github.com/user-attachments/assets/af6ea1bc-6e27-4a4c-b983-89f6186bc902)
+
+Frogs have a smaller hitbox, and spawn often in easier difficulties. Because of their smaller hitboxes, they are easier to avoid by jumping.
+
+#### Monks
+![image](https://github.com/user-attachments/assets/516fe42f-7394-4ce7-b61f-d4e94be562d1)
+
+Monks have a large hitbox, so players must time their jumps well toa void them.
+
+#### Aliens
+![image](https://github.com/user-attachments/assets/bc64badf-023b-4f7f-81aa-6dfc112cac6f)
+
+Aliens are small like frogs, and tend to move quickly on high difficulties. Along with frogs and skulls, they spawn the most often.
+
+#### Skulls
+![image](https://github.com/user-attachments/assets/7b103d9e-e82a-4b76-96c6-eeebdd378a82)
+
+Skulls fly through the air, so the player must be careful about jumping when they are above. This introduces extra difficulty on the endless mode, where enemies can have varying speeds, so skulls may fly above walking enemies. Players must use their ammo and health resources accordingly to survive in tight circumstances like these.
+
+#### Spikes
+![image](https://github.com/user-attachments/assets/2df66baf-acac-486d-b04b-1d6a92446524)
+
+Players must watch out for spikes on the ground, mixed in with the enemies and items. They cannot be destroyed and must be jumped over.
+
+### Friendly NPCs
+Friendly NPCs reduce the player's score by 200 when shot.
+ 
+#### Warriors
+![image](https://github.com/user-attachments/assets/7d324aac-dae7-4141-b256-87054eeaf495)
+
+Fellow explorers of the planet who walk along the ground, mixed in with enemies. Players must be careful with their shots so as not to reduce their score by shooting them.
 
 ## Game World
 

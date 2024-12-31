@@ -13,11 +13,50 @@ Your goal is to survive the relentless onslaught of enemies and obstacles while 
 
 The game features two levels of increasing difficulty which end once you reach your ship, and an endless level which track your score and player high scores, so players can test their skills and challenges themsleves and their friends to reach higher scores.
 
-## Gameplay
+## Gameplay  
 
+*Space Escape* delivers fast-paced 2D auto-scrolling action inspired by popular mobile games like *Jetpack Joyride* and *Temple Run*. The core gameplay revolves around quick reflexes, avoiding enemies and resource management.  
 
-## Game Progression
+### Mechanics  
+- **Endless Running:** The player character automatically moves forward, creating a constant sense of momentum. The scrolling background enhances the feeling of speed and progression as the player races to survive.  
+- **Enemy Encounters:** Enemies spawn from the right side of the screen and move toward the player. Players must time jumps to avoid enemies, while attempting to collect coins and items.
+- **Power-Ups and Collectibles:**  
+  - **Coins:** Increases the player's score and encourages risky maneuvers to collect them.  
+  - **Health Packs:** Restores health lost to enemy attacks.  
+  - **Ammo Pickups:** Allows the player to fire their gun, eliminating enemies for additional score points.  
+- **Dynamic Difficulty:**  
+  - **Level 1:** Slow-moving enemies, frequent item spawns, and longer gaps between enemy waves for teaching new players the mechanics.  
+  - **Level 2:** Enemies move faster, spawn more frequently, and items become less common, raising the challenge.  
+  - **Level 3 (Endless Mode):** Enemies spawn at varying speeds and rhythms, forcing the player to adapt quickly and manage their ammo carefully. Fewer items spawn, while enemies arrive in unpredictable patterns to keep players on their toes.
+- **Score Tracking:**  
+  - Level 3, the endless mode, tracks player's scores. When a player reaches a game over, the player's score from the run is displayed and the best high-score on record is displayed. if the layer has beaten the hiigh-score, their score will replace it.
 
+### Additional Challenges  
+- **Friendly NPCs:** Friendly warrior characters occasionally appear on the battlefield. Shooting them reduces the player’s score, keeping player's on their toes, increasing variance in the npc behaviours, and discouraging being too liberal with the gun.  
+- **Score System:** Endless Mode tracks high scores, allowing players to challenge themselves and compete with friends for bragging rights.  
+
+## Game Progression  
+
+Players can choose to play from three distinct modes: **Level 1**, **Level 2**, or the **Endless Mode**, each designed to offer a unique experience and cater to different skill levels.  
+
+### Level 1  
+- Designed to introduce new players to the game mechanics.  
+- Features slower enemies, frequent item spawns, and longer intervals between enemy waves.  
+- After **60 seconds**, the player reaches their ship and completes the level.  
+- The completion screen allows players to return to the main menu.  
+
+### Level 2  
+- Provides an increased challenge for players seeking a tougher experience.  
+- Features faster enemies, less frequent item spawns, and shorter intervals between enemy waves.  
+- The level ends after **120 seconds** when the player reaches their ship and escapes.  
+- The completion screen allows players to return to the main menu.
+- 
+### Endless Mode  
+- The game continues indefinitely until the player reaches a **game over**.  
+- Tracks the player’s score throughout the run, encouraging replayability and competition.  
+- Allows players to continuously sharpen their skill and aim for higher scores.
+
+With its structured progression and replayable endless mode, *Space Escape* is an engaging experience for hose looking for a high-skill challenge, and for new players learning the game.  
 
 ## Game Mechanics
 

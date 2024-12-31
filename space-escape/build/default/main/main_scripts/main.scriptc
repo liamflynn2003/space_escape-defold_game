@@ -1,6 +1,6 @@
 
-‰Q
-æP--[[ 
+áQ
+¾Q--[[ 
 =============================================================================================
 
 Lua Script File:  	main.script
@@ -83,7 +83,7 @@ function update_score(self, score)
 
     -- Check if the current scene is LEVEL3_RUNNING before updating the high score
     if self.state == "LEVEL3_RUNNING" then
-        -- Check if the player has achieved a new high score
+        -- Update the high score only if the player's score exceeds it
         if player_score > high_score then
             high_score = player_score  -- Update the high score
             save_high_score()  -- Save the new high score to the file
@@ -93,6 +93,7 @@ function update_score(self, score)
     -- Send the updated score to HUD
     msg.post("level3:/hud#player_hud", "update_score", { score = player_score })
 end
+
 
 -- ------------------------------------------------------------------------------------------
 -- Stop Sound Utility Function
@@ -175,6 +176,7 @@ function on_message(self, message_id, message, sender)
 
         -- Enable the main menu
         msg.post("#main_menu", "enable")
+        player_score = 0 -- Reset Player Score whenever main menu is entered
         self.state = "MAIN_MENU"
 
         -- Play sound when transitioning to the main menu

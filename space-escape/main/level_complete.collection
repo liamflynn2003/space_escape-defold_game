@@ -18,7 +18,6 @@ embedded_instances {
   "  id: \"sound\"\n"
   "  type: \"sound\"\n"
   "  data: \"sound: \\\"/audio/levelcomplete.wav\\\"\\n"
-  "looping: 1\\n"
   "\"\n"
   "}\n"
   ""

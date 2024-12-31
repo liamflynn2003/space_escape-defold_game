@@ -67,13 +67,19 @@ With its structured progression and replayable endless mode, *Space Escape* is a
 ### Health
 ![image](https://github.com/user-attachments/assets/ba246277-791e-4d18-aafe-60804f7a5c98)
 
+The player has 4 health, represented by 4 icons in the top left of the screen. 
 ![computer-console](https://github.com/user-attachments/assets/5221fd41-bae8-425c-841a-237aaa35f9ce)
+
+Player's can collect health pickups during the level to recover lost health, but it cannot exceed 5.
 
 ### Ammo
 ![image](https://github.com/user-attachments/assets/946ab7c5-9b97-48d9-aef5-91f3544d6772)
 
-![weapon](https://github.com/user-attachments/assets/7c86bc90-b084-4cc3-8097-cab73f5d5053)
+Player's can have a maximum ammo of 5. With ammo, a player can shoot their gun. Shooting reduces a player's ammo by one, represented in the HUD by the ammo boxes above.
 
+![weapon](https://github.com/user-attachments/assets/7c86bc90-b084-4cc3-8097-cab73f5d5053)
+ PLayer's can increase their ammo by 1 by picking up these weapon items during the levels.
+ 
 ### Shooting
 ![image](https://github.com/user-attachments/assets/d05ab066-42c1-4e83-94e6-62f02cb05958)
 

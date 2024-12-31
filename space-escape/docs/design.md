@@ -230,3 +230,8 @@ For **Space Escape**, the game can be distributed through the following platform
   - Popular among indie game enthusiasts.
   - Flexible monetization (pay-what-you-want or fixed price).
   - Simple submission process with less strict approval requirements.
+
+ ### Resources Used
+ - All sprites, tiles, aniamtions and other visual resources were obtained from the Alien-World sample via Defold: https://defold.com/assets/alienworld/
+![image](https://github.com/user-attachments/assets/ef39b94b-f6b0-480b-8684-6bd39eafec00)
+

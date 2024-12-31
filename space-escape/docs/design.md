@@ -79,7 +79,7 @@ Player's can collect health pickups during the level to recover lost health, but
 Player's can have a maximum ammo of 5. With ammo, a player can shoot their gun. Shooting reduces a player's ammo by one, represented in the HUD by the ammo boxes above.
 
 ![weapon](https://github.com/user-attachments/assets/7c86bc90-b084-4cc3-8097-cab73f5d5053)
- PLayer's can increase their ammo by 1 by picking up these weapon items during the levels.
+ Player's can increase their ammo by 1 by picking up these weapon items during the levels.
  
 ### Shooting
 ![image](https://github.com/user-attachments/assets/d05ab066-42c1-4e83-94e6-62f02cb05958)
